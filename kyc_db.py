@@ -33,7 +33,7 @@ mysql = MySQL(app)
 try:
     conn = mysql.connect()
 except:
-    print('conn unsucesful')
+    logging.ERROR('Unsuccesfull connection to Database')
     sys.exit()
 db = conn.cursor()
 
@@ -48,6 +48,8 @@ def entry():
 def data():
     name = request.form['name']
     father_spouse_name = request.form['fsname']
+    gender = request.form['gender']
+    marital_status = request.form['maritalstatus']
     pan = request.form['pan']
     aadhar = request.form['aadhar']
     address = request.form['address']
@@ -61,15 +63,18 @@ def data():
 
     if(validator.name_validation(name) and validator.name_validation(father_spouse_name) and validator.pan_validation(pan)):
         
+        
         query = f"INSERT INTO trialDB.kycustomer (pan, customer_name) VALUES ('{pan}', '{name}');"
         try:
             db.execute(query)
             conn.commit()
         except:
-            return render_template('/home.html', error='Invalid information filled or data already exists')
-        return render_template('result.html', 
-                                s_name = name, 
+            return render_template('/home.html', error='Invalid information filled or data already exists', the_title='KYC Form Entry')
+        return render_template('result.html',
+                                s_name = name,
                                 s_fsname = father_spouse_name, 
+                                s_gender = gender,
+                                s_marital = marital_status,
                                 s_pan = pan,
                                 s_aadhar = aadhar,
                                 s_address = address,
@@ -82,7 +87,7 @@ def data():
                                 the_title = title, 
         )
     else:
-        return render_template('/home.html', error='Invalid information filled')
+        return render_template('/home.html', error='Invalid information filled', the_title='KYC Form entry')
 
 if __name__ ==  '__main__': 
     app.run(debug=True)
