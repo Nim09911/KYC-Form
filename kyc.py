@@ -10,8 +10,6 @@ logging.basicConfig(level=logging.DEBUG)
 '''
     #TODO:
         #* Images
-        #! Date of Birth
-        #! Generate Application Number
         #* DataBase
         #? View Data page -> input application number
         #? Update Data page -> time consuming
@@ -65,30 +63,34 @@ def data():
     if(validator.name_validation(name) and validator.name_validation(father_spouse_name) and validator.pan_validation(pan)):
         
         kycno = random.randint(10000000000000, 99999999999999)
+        query = "SELECT KYCNO FROM IDENTITY_DETAILS;"
+        print(db.execute(query))
+        while(kycno in db.fetchall()):
+            kycno = random.randint(10000000000000, 99999999999999)
+
         #! randomly generate KYCNO and check if its not already in table
         
         query = f"INSERT INTO IDENTITY_DETAILS (KYCNO, CUSTOMER_NAME, FS_NAME, GENDER, MARITAL_STATUS, DOB, PAN, AADHAR) VALUES ('{kycno}', '{name}', '{father_spouse_name}', '{gender}', '{marital_status}', '{dob}', '{pan}', '{aadhar}');"
         try:
             db.execute(query)
-            conn.commit()
         except:
             return render_template('/home.html', error='Invalid Identity details filled', the_title='KYC Form Entry')
         
         query = f"INSERT INTO ADDRESS_DETAILS (KYCNO, HOME_ADDRESS, CITY, STATE_NAME, POSTAL_CODE, EMAIL, TELEPHONE, MOBILE) VALUES ('{kycno}', '{address}', '{city}', '{state}', '{pincode}', '{email}', '{telephone}', '{mobile}');"
         try:
             db.execute(query)
-            conn.commit()
         except:
             return render_template('/home.html', error='Invalid Address details filled', the_title='KYC Form Entry')
         
         query = f"INSERT INTO OTHER_DETAILS (KYCNO, PAN, INCOME, OCCUPATION) VALUES ('{kycno}', '{pan}', '{income}', '{occupation}');"
         try:
             db.execute(query)
-            conn.commit()
         except:
             return render_template('/home.html', error='Invalid Other details filled', the_title='KYC Form Entry')
         
+        conn.commit()
         return render_template('result.html',
+                                s_kyc = kycno,
                                 s_name = name,
                                 s_fsname = father_spouse_name, 
                                 s_gender = gender,
