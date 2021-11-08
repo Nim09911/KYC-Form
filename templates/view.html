@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+	
+	<!-- Body template design  -->
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<form method ='POST' action ='/result' ></form>
+
+<table>
+    <p>A. Identity</p>
+    <tr>
+        <td> Enter KYC Number: </td>
+        <td> <input name = 'kycno' type = 'text' width = '120' placeholder='14digits' maxlength='14' minlength="14" required></td>
+    </tr>
+    <p> <input value = 'Submit' type = 'submit'> </p>
+</table>

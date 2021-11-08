@@ -64,7 +64,7 @@ def data():
         
         kycno = random.randint(10000000000000, 99999999999999)
         query = "SELECT KYCNO FROM IDENTITY_DETAILS;"
-        print(db.execute(query))
+        db.execute(query)
         while(kycno in db.fetchall()):
             kycno = random.randint(10000000000000, 99999999999999)
 
@@ -110,5 +110,36 @@ def data():
     else:
         return render_template('/home.html', error='Invalid information filled', the_title='KYC Form entry')
 
+'''
+@app.route('/view', methods = ['GET'])
+def view():
+
+    kycno = request.form['kycno']
+    query = "SELECT KYCNO FROM IDENTITY_DETAILS WHERE KYCNO = '{kycno}';"
+    db.execute()
+    if(kycno in db.fetchall()):
+        #! TRIPLE INNER JOIN QUERY FOR ALL THE DATA
+        query = "SELECT"
+
+        return render_template('result.html',
+                            s_kyc = kycno,
+                            s_name = name,
+                            s_fsname = father_spouse_name, 
+                            s_gender = gender,
+                            s_marital = marital_status,
+                            s_dob = dob,
+                            s_pan = pan,
+                            s_aadhar = aadhar,
+                            s_address = address,
+                            s_city = city,
+                            s_state = state,
+                            s_pincode = pincode,
+                            s_poa = address_proof,
+                            s_income = income,
+                            s_occupation = occupation,
+                            the_title = title, 
+    )
+'''
 if __name__ ==  '__main__': 
     app.run(debug=True)
+
