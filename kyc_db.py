@@ -46,6 +46,7 @@ def data():
     father_spouse_name = request.form['fsname']
     gender = request.form['gender']
     marital_status = request.form['maritalstatus']
+    dob = request.form['dob']
     pan = request.form['pan']
     aadhar = request.form['aadhar']
     address = request.form['address']
@@ -66,7 +67,7 @@ def data():
         kycno = random.randint(10000000000000, 99999999999999)
         #! randomly generate KYCNO and check if its not already in table
         
-        query = f"INSERT INTO IDENTITY_DETAILS (KYCNO, CUSTOMER_NAME, FS_NAME, GENDER, MARITAL_STATUS, PAN, AADHAR) VALUES ('{kycno}', '{name}', '{father_spouse_name}', '{gender}', '{marital_status}', '{pan}', '{aadhar}');"
+        query = f"INSERT INTO IDENTITY_DETAILS (KYCNO, CUSTOMER_NAME, FS_NAME, GENDER, MARITAL_STATUS, DOB, PAN, AADHAR) VALUES ('{kycno}', '{name}', '{father_spouse_name}', '{gender}', '{marital_status}', '{dob}', '{pan}', '{aadhar}');"
         try:
             db.execute(query)
             conn.commit()
@@ -85,13 +86,14 @@ def data():
             db.execute(query)
             conn.commit()
         except:
-            return render_template('/home.html', error='Invalid Identity details filled', the_title='KYC Form Entry')
+            return render_template('/home.html', error='Invalid Other details filled', the_title='KYC Form Entry')
         
         return render_template('result.html',
                                 s_name = name,
                                 s_fsname = father_spouse_name, 
                                 s_gender = gender,
                                 s_marital = marital_status,
+                                s_dob = dob,
                                 s_pan = pan,
                                 s_aadhar = aadhar,
                                 s_address = address,

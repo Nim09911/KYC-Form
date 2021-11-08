@@ -45,7 +45,13 @@
                 <input name = 'gender' type = 'radio' value='Female'>
                     <label>Female</label>
             </td>
-        </tr>      
+        </tr>
+        <tr>
+            <td>Date of Birth: </td>
+            <td>
+                <input name='dob' type='date'>
+            </td>
+        </tr>
         <tr>
             <td> PAN*: </td>
             <td> <input name = 'pan' type = 'text' width = '120' maxlength='10' minlength='10' required></td>
@@ -82,45 +88,45 @@
     <table>
         <tr>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Passport' required>
                 <label>Passport</label>                
             </td>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Ration Card' required>
                 <label>Ration Card</label>                
             </td>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Registered Lease' required>
                 <label>Registered Lease</label>                
             </td>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Residence Sale Agreement' required>
                 <label>Residence Sale Agreement</label>                
             </td>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Driving License' required>
                 <label>Driving License</label>                
             </td>
         </tr>
         <tr>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Voter ID' required>
                 <label>Voter ID</label>                
             </td>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Latest Bank Statement' required>
                 <label>Latest Bank Statement</label>                
             </td>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Latest Tel.Ph. Bill' required>
                 <label>Latest Tel.Ph. Bill</label>                
             </td>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Latest Elec. Bill' required>
                 <label>Latest Elec. Bill</label>                
             </td>
             <td>
-                <input name='poa' type="radio" value='passport' required>
+                <input name='poa' type="radio" value='Latest Gas Bill' required>
                 <label>Latest Gas Bill</label>                
             </td>
         </tr>
@@ -147,51 +153,30 @@
             </td>
         </tr>
     </table>
-<!--
-    <p>B4. Permanent Address(applicable if different from B1) OR Overseas Address (Mandatory) for Non-Resident</p>
-    <table>
-        <tr>
-            <td>Address: </td>
-            <td> <input name = 'addressp' type = 'text' width = '120' placeholder='max char 102' maxlength='102'></td>
-        </tr>
-        <tr>
-            <td> City/Town/Village: </td>
-            <td> <input name = 'cityp' type = 'text' width = '120' placeholder='max char 48' maxlength='48'></td>
-        </tr>
-        <tr>
-            <td> State: </td>
-            <td> <input name = 'statep' type = 'text' width = '120' placeholder='max char 48' maxlength='48'></td>
-        </tr>
-        <tr>
-            <td> Postal Code: </td>
-            <td> <input name = 'pincodep' type = 'text' width = '120' placeholder='max 10' maxlength='10'></td>
-        </tr>
 
-    </table>
--->
     <p>C. Other Details</p>
     <table>
 
         <tr>
             <td>Gross Annual Income Details</td>
             <td>
-                <input name = 'income' type = 'radio' value='below1lac' required>
+                <input name = 'income' type = 'radio' value=' &lt; 1lac' required>
                     <label> &lt; 1lac </label>
             </td>
             <td>
-                <input name = 'income' type = 'radio' value='1to5lac'>
+                <input name = 'income' type = 'radio' value='1 to 5lac'>
                     <label> &lt; 1 - 5 lac </label>
             </td>
             <td>
-                <input name = 'income' type = 'radio' value='5to10lac'>
+                <input name = 'income' type = 'radio' value='5 to 10lac'>
                     <label> &lt; 5 - 10 lac </label>
             </td>
             <td>
-                <input name = 'income' type = 'radio' value='10to25lac'>
+                <input name = 'income' type = 'radio' value='10 to 25lac'>
                     <label> 10 - 25 lac </label>
             </td>
             <td>
-                <input name = 'income' type = 'radio' value='above25lac'>
+                <input name = 'income' type = 'radio' value='&gt; 25lac'>
                     <label> &gt; 25 lac </label>
             </td>
         </tr>
@@ -199,52 +184,46 @@
         <tr>
             <td>Occupation Details</td>
             <td>
-                <input name = 'occupation' type = 'radio' value='private_service' required>
+                <input name = 'occupation' type = 'radio' value='Private Sector Service' required>
                     <label> Private Sector Service </label>
             </td>
             <td>
-                <input name = 'occupation' type = 'radio' value='public'>
+                <input name = 'occupation' type = 'radio' value='Public Sector'>
                     <label> Public Sector </label>
             </td>
             <td>
-                <input name = 'occupation' type = 'radio' value='government'>
+                <input name = 'occupation' type = 'radio' value='Government'>
                     <label> Government Sector </label>
             </td>
             <td>
-                <input name = 'occupation' type = 'radio' value='business'>
+                <input name = 'occupation' type = 'radio' value='Business'>
                     <label> Business </label>
             </td>
             <td>
-                <input name = 'occupation' type = 'radio' value='professional'>
+                <input name = 'occupation' type = 'radio' value='Professional'>
                     <label> Professional </label>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>
-                <input name = 'occupation' type = 'radio' value='agriculturist'>
+                <input name = 'occupation' type = 'radio' value='Agriculturist'>
                     <label> Agriculturist </label>
             </td>
             <td>
-                <input name = 'occupation' type = 'radio' value='retired'>
+                <input name = 'occupation' type = 'radio' value='Retired'>
                     <label> Retired </label>
             </td>
             <td>
-                <input name = 'occupation' type = 'radio' value='housewife'>
+                <input name = 'occupation' type = 'radio' value='Housewife'>
                     <label> Housewife </label>
             </td>
             <td>
-                <input name = 'occupation' type = 'radio' value='student'>
+                <input name = 'occupation' type = 'radio' value='Student'>
                     <label> Student </label>
             </td>
-        <!--
             <td>
-                <input name = 'occupation' type = 'radio' value='forex'>
-                    <label> Forex Dealer </label>
-            </td>
-        -->
-            <td>
-                <input name = 'occupation' type = 'radio' value='others'>
+                <input name = 'occupation' type = 'radio' value='Others'>
                     <label> Others </label>
             </td>
         </tr>
