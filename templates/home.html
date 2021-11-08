@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+	
+	<!-- Body template design  -->
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+{% if error %}
+    <div class="error-msg", style="color:red;">{{ error }}</div>
+{% endif %}
+
+<form method ='POST' action ='/result' >
+
+    <p> Use this form to submit your KYC details: </p>
+
+    <table>
+        <p>A. Identity</p>
+        <tr>
+            <td> Name*: </td>
+            <td> <input name = 'name' type = 'text' width = '120' placeholder='max char 48' maxlength='48' required></td>
+        </tr>
+        <tr>
+            <td> Fathers/Spouse Name*: </td>
+            <td> <input name = 'fsname' type = 'text' width = '120' placeholder='max char 48' maxlength='48' required></td>
+        </tr>
+        <tr>
+            <td> PAN*: </td>
+            <td> <input name = 'pan' type = 'text' width = '120' maxlength='10' minlength='10' required></td>
+        </tr>
+    </table>
+
+    
+    <p>B Address Details</p>
+
+    <p>B1. Address Correspondance*</p>
+    <table>
+        <tr>
+            <td> Address*:</td>
+            <td> <input name = 'addressc' type = 'text' width = '120' placeholder='max char 102' maxlength='102' required></td>
+        </tr>
+        <tr>
+            <td> City/Town/Village*: </td>
+            <td> <input name = 'cityc' type = 'text' width = '120' placeholder='max char 48' maxlength='48' required></td>
+        </tr>
+        <tr>
+            <td> State: </td>
+            <td> <input name = 'statec' type = 'text' width = '120' placeholder='max char 48' maxlength='48'></td>
+        </tr>
+        <tr>
+            <td> Postal Code*: </td>
+            <td> <input name = 'pincodec' type = 'text' width = '120' placeholder='6 digit' maxlength='6' minlength='6' required></td>
+        </tr>
+    </table>
+
+    <p>B4. Permanent Address(applicable if different from B1) OR Overseas Address (Mandatory) for Non-Resident</p>
+    <table>
+        <tr>
+            <td>Address: </td>
+            <td> <input name = 'addressp' type = 'text' width = '120' placeholder='max char 102' maxlength='102'></td>
+        </tr>
+        <tr>
+            <td> City/Town/Village: </td>
+            <td> <input name = 'cityp' type = 'text' width = '120' placeholder='max char 48' maxlength='48'></td>
+        </tr>
+        <tr>
+            <td> State: </td>
+            <td> <input name = 'statep' type = 'text' width = '120' placeholder='max char 48' maxlength='48'></td>
+        </tr>
+        <tr>
+            <td> Postal Code: </td>
+            <td> <input name = 'pincodep' type = 'text' width = '120' placeholder='max 10' maxlength='10'></td>
+        </tr>
+
+    </table>
+
+    <p> When you are ready please click this button and ensure all data is correctly filled!</p>
+    <p> <input value = 'Submit' type = 'submit'> </p>
+
+</form>
+
+{% endblock %}

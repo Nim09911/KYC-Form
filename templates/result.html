@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+	<!-- Result template design -->
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<p> You submitted the following data: </p>
+
+<table>
+	<tr>
+		<td> Name: </td>
+		<td> {{ s_name }}</td>
+	</tr>
+	<tr>
+		<td> Father/Spouse Name: </td>
+		<td> {{ s_fsname }}</td>
+	</tr>
+	<tr>
+		<td> PAN: </td>
+		<td> {{ s_pan }}</td>
+	</tr>
+</table>
+
+{% endblock %}
