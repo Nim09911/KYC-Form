@@ -17,13 +17,35 @@
     <table>
         <p>A. Identity</p>
         <tr>
-            <td> Name*: </td>
+            <td> Name of Applicant*: </td>
             <td> <input name = 'name' type = 'text' width = '120' placeholder='max char 48' maxlength='48' required></td>
         </tr>
         <tr>
             <td> Fathers/Spouse Name*: </td>
             <td> <input name = 'fsname' type = 'text' width = '120' placeholder='max char 48' maxlength='48' required></td>
         </tr>
+        <tr>
+            <td> Marital Status*: </td>
+            <td>
+                <input name = 'maritalstatus' type = 'radio' value='Married' required>
+                    <label>Married</label>
+            </td>
+            <td>
+                <input name = 'maritalstatus' type = 'radio' value='Single'>
+                    <label>Single</label>
+            </td>
+        </tr>  
+        <tr>
+            <td> Gender*: </td>
+            <td>
+                <input name = 'gender' type = 'radio' value='Male' required>
+                    <label>Male</label>
+            </td>
+            <td>
+                <input name = 'gender' type = 'radio' value='Female'>
+                    <label>Female</label>
+            </td>
+        </tr>      
         <tr>
             <td> PAN*: </td>
             <td> <input name = 'pan' type = 'text' width = '120' maxlength='10' minlength='10' required></td>
@@ -71,6 +93,36 @@
             <td> Postal Code: </td>
             <td> <input name = 'pincodep' type = 'text' width = '120' placeholder='max 10' maxlength='10'></td>
         </tr>
+
+    </table>
+
+    <p>C. Other Details</p>
+    <table>
+
+        <tr>
+            <td>Gross Annual Income Details</td>
+            <td>
+                <input name = 'income' type = 'radio' value='below1lac' required>
+                    <label> &lt; 1lac </label>
+            </td>
+            <td>
+                <input name = 'income' type = 'radio' value='1to5lac' required>
+                    <label> &lt; 1 - 5 lac </label>
+            </td>
+            <td>
+                <input name = 'income' type = 'radio' value='5to10lac' required>
+                    <label> &lt; 5 - 10 lac </label>
+            </td>
+            <td>
+                <input name = 'income' type = 'radio' value='10to25lac' required>
+                    <label> 10 - 25 lac </label>
+            </td>
+            <td>
+                <input name = 'income' type = 'radio' value='above25lac' required>
+                    <label> &gt; 25 lac </label>
+            </td>
+        </tr>
+
 
     </table>
 
