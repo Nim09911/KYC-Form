@@ -6,6 +6,20 @@ app = Flask(__name__)
 
 logging.basicConfig(level=logging.DEBUG)
 
+'''
+    #TODO:
+        #* Email
+        #* Telephone
+        #* Images
+        #* Gender
+        #* Date of Birth
+        #* Generate Application Number
+        #! DataBase
+        #! DataBase connection
+        #? View Data page -> input application number
+        #? Update Data page -> time consuming
+'''
+
 @app.route('/')
 @app.route('/kycform')
 def entry():  
