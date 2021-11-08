@@ -79,6 +79,87 @@ def test_aadhar(aadhar,status):
 def test_name(name,status):
     try :
         assert name_validation(name) == status
+
+from validator import *
+
+
+pan_test = {
+    "AAAAA1245A" : True,
+    "sddvd" : False,
+    "aaaaa1245a" : False,
+    "12456aaaa1" : False,
+    "125" : False,
+    "AAAAA1245AA" : False,
+    "AAAAA/1245A" : False
+    
+}
+    
+aadhar_test = {
+    "123456789156" : True,
+    "ac5555555555" : False,
+    "12365" : False,
+    "aaaaaaaaaaaa" : False,
+    "aaa555" : False,
+    "aaa--555" : False 
+}
+
+name_test = {
+    "Tiya Thomas" : True,
+    "56888" : False,
+    "Hi" : False,
+    "SAni5" : False,
+    "Ti+ya" : False
+}
+    
+phone_test = {
+    "9874563215" : True,
+    "15698" : False,
+    "abcdefghij" : False,
+    "acddb12345" : False,
+    "abcde" : False,
+    "12345678915" : False,
+    "12345/6789" : False
+}
+    
+dob_test = {
+    "26,5,2001" :True,
+    "29,2,2016" :False,
+    "31,2,2001" :False,
+    "29,2,2001" :False,
+    "22,3,2026" :False,
+    "31,4,2001" :False,
+    "2,13,2001" :False,
+    "2,3,1810" : False,
+    "2,-5,2001" :False
+}
+    
+pin_test = {
+    "695582" : True,
+    "123" : False,
+    "abc" : False,
+    "abcdef" : False,
+    "123-34" : False,
+    "1236547" : False
+}
+
+ 
+def test_pan(pan,status):
+    try :
+        assert pan_validation(pan) == status
+        print(f'Test case:  \"{pan}\" : PASSED.\nExpected : {status}\nAsserted : {pan_validation(pan)}\n')
+    except:
+        print(f'Test case:  \"{pan}\" : FAILED.\nExpected : {status}\nAsserted : {pan_validation(pan)}\n')
+
+def test_aadhar(aadhar,status):
+    try :
+        assert aadhar_validation(aadhar) == status
+        print(f'Test case:  \"{aadhar}\" : PASSED.\nExpected : {status}\nAsserted : {aadhar_validation(aadhar)}\n')
+    except:
+        print(f'Test case:  \"{aadhar}\" : FAILED.\nExpected : {status}\nAsserted : {aadhar_validation(aadhar)}\n')
+ 
+def test_name(name,status):
+    try :
+        assert name_validation(name) == status
         print(f'Test case:  \"{name}\" : PASSED.\nExpected : {status}\nAsserted : {name_validation(name)}\n')
     except:
         print(f'Test case:  \"{name}\" : FAILED.\nExpected : {status}\nAsserted : {name_validation(name)}\n')
