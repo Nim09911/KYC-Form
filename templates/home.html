@@ -50,9 +50,13 @@
             <td> PAN*: </td>
             <td> <input name = 'pan' type = 'text' width = '120' maxlength='10' minlength='10' required></td>
         </tr>
+        <tr>
+            <td> Aadhar*: </td>
+            <td> <input name = 'aadhar' type = 'text' width = '120' maxlength='12' minlength='12' required></td>
+        </tr>
     </table>
 
-    
+
     <p>B Address Details</p>
 
     <p>B1. Address Correspondance*</p>
@@ -75,6 +79,54 @@
         </tr>
     </table>
 
+    <p>Proof of Address: Please Select one</p>    
+    <table>
+        <tr>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Passport</label>                
+            </td>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Ration Card</label>                
+            </td>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Registered Lease</label>                
+            </td>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Residence Sale Agreement</label>                
+            </td>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Driving License</label>                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Voter ID</label>                
+            </td>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Latest Bank Statement</label>                
+            </td>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Latest Tel.Ph. Bill</label>                
+            </td>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Latest Elec. Bill</label>                
+            </td>
+            <td>
+                <input name='poa' type="radio" value='passport' required>
+                <label>Latest Gas Bill</label>                
+            </td>
+        </tr>
+    </table>
+<!--
     <p>B4. Permanent Address(applicable if different from B1) OR Overseas Address (Mandatory) for Non-Resident</p>
     <table>
         <tr>
@@ -95,7 +147,7 @@
         </tr>
 
     </table>
-
+-->
     <p>C. Other Details</p>
     <table>
 
@@ -106,20 +158,73 @@
                     <label> &lt; 1lac </label>
             </td>
             <td>
-                <input name = 'income' type = 'radio' value='1to5lac' required>
+                <input name = 'income' type = 'radio' value='1to5lac'>
                     <label> &lt; 1 - 5 lac </label>
             </td>
             <td>
-                <input name = 'income' type = 'radio' value='5to10lac' required>
+                <input name = 'income' type = 'radio' value='5to10lac'>
                     <label> &lt; 5 - 10 lac </label>
             </td>
             <td>
-                <input name = 'income' type = 'radio' value='10to25lac' required>
+                <input name = 'income' type = 'radio' value='10to25lac'>
                     <label> 10 - 25 lac </label>
             </td>
             <td>
-                <input name = 'income' type = 'radio' value='above25lac' required>
+                <input name = 'income' type = 'radio' value='above25lac'>
                     <label> &gt; 25 lac </label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Occupation Details</td>
+            <td>
+                <input name = 'occupation' type = 'radio' value='private_service' required>
+                    <label> Private Sector Service </label>
+            </td>
+            <td>
+                <input name = 'occupation' type = 'radio' value='public'>
+                    <label> Public Sector </label>
+            </td>
+            <td>
+                <input name = 'occupation' type = 'radio' value='government'>
+                    <label> Government Sector </label>
+            </td>
+            <td>
+                <input name = 'occupation' type = 'radio' value='business'>
+                    <label> Business </label>
+            </td>
+            <td>
+                <input name = 'occupation' type = 'radio' value='professional'>
+                    <label> Professional </label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input name = 'occupation' type = 'radio' value='agriculturist'>
+                    <label> Agriculturist </label>
+            </td>
+            <td>
+                <input name = 'occupation' type = 'radio' value='retired'>
+                    <label> Retired </label>
+            </td>
+            <td>
+                <input name = 'occupation' type = 'radio' value='housewife'>
+                    <label> Housewife </label>
+            </td>
+            <td>
+                <input name = 'occupation' type = 'radio' value='student'>
+                    <label> Student </label>
+            </td>
+        <!--
+            <td>
+                <input name = 'occupation' type = 'radio' value='forex'>
+                    <label> Forex Dealer </label>
+            </td>
+        -->
+            <td>
+                <input name = 'occupation' type = 'radio' value='others'>
+                    <label> Others </label>
             </td>
         </tr>
 
