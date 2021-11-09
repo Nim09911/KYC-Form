@@ -19,15 +19,15 @@ logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 
 #* MySQL conection and configuration
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Ashumysql@10'
-app.config['MYSQL_DATABASE_DB'] = 'kyc'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-
 # app.config['MYSQL_DATABASE_USER'] = 'root'
-# app.config['MYSQL_DATABASE_PASSWORD'] = ''
+# app.config['MYSQL_DATABASE_PASSWORD'] = 'Ashumysql@10'
 # app.config['MYSQL_DATABASE_DB'] = 'kyc'
 # app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_DB'] = 'kyc'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
 mysql = MySQL(app)
 
@@ -59,7 +59,6 @@ def data():
     state = request.form['state']
     pincode = request.form['pincode']
     address_proof = request.form['poa']
-    #! change telephone and mobile after changes in UI
     telephone = str(request.form['tel1']) or ""
     mobile = str(request.form['mobile1']) or ""
     email = request.form['mail']
@@ -203,9 +202,7 @@ def viewresult():
         )
     except:
         logging.info('Record does not exist -> enter error message')
-        return render_template('/view.html')
-
+        return render_template('/view.html', error='Invalid KYC Number')
 
 if __name__ ==  '__main__': 
     app.run(debug=True)
-
