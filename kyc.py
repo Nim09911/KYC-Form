@@ -59,8 +59,8 @@ def data():
     pincode = request.form['pincode']
     address_proof = request.form['poa']
     #! change telephone and mobile after changes in UI
-    telephone = str(request.form['tel1']) + str(request.form['tel2']) + str(request.form['tel3']) or ""
-    mobile = str(request.form['mobile1']) + str(request.form['mobile2']) or ""
+    telephone = str(request.form['tel1']) or ""
+    mobile = str(request.form['mobile1']) or ""
     email = request.form['mail']
     income = request.form['income']
     occupation = request.form['occupation']
