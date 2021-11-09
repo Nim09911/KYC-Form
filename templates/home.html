@@ -44,7 +44,7 @@
                     <label for="Name" class="form-label">Name of the Applicant* :-</label>
                 </div>
                 <div class="col-8 ps-0 mb-3">
-                    <input type="text" name="name" maxLength="48" class="form-control" id="applicantName">
+                    <input type="text" name="name" maxLength="48" class="form-control" id="applicantName" required>
                 </div>
                 <div class="col-2">
                     <div id="nameHelp" class="form-text"> (Max 48 chracters )</div>
@@ -54,7 +54,7 @@
                     <label for="G_Name" class="form-label">Fathers/Spouse Name* :-</label>
                 </div>
                 <div class="col-8 ps-0 mb-3">
-                    <input type="text" name="fsname" maxLength="48" class="form-control" id="gaurdianName">
+                    <input type="text" name="fsname" maxLength="48" class="form-control" id="gaurdianName" required>
                 </div>
                 <div class="col-2">
                     <div id="nameHelp" class="form-text"> (Max 48 chracters )</div>
@@ -64,7 +64,7 @@
                     <label for="martialStatus" class="form-label">Martial Status* :-</label>
                 </div>
                 <div class="col-3">
-                    <input class="form-check-input" type="radio" name="maritalstatus" id="Married">
+                    <input class="form-check-input" type="radio" name="maritalstatus" id="Married" required>
                     <label class="form-check-label" for="Married">
                         Married
                     </label>
@@ -81,7 +81,7 @@
                     <label for="gender" class="form-label">Gender* :-</label>
                 </div>
                 <div class="col-3">
-                    <input class="form-check-input" type="radio" name="gender" id="Male">
+                    <input class="form-check-input" type="radio" name="gender" id="Male" required>
                     <label class="form-check-label" for="Male">
                         Male
                     </label>
@@ -113,7 +113,7 @@
                     <label for="PAN" class="form-label">PAN number* :-</label>
                 </div>
                 <div class="col-8 ps-0 mb-3">
-                    <input type="text" name="pan" maxlength="10" minlength="10" class="form-control" id="PAN">
+                    <input type="text" name="pan" maxlength="10" minlength="10" class="form-control" id="PAN" required>
                 </div>
                 <div class="col-2"></div>
 
@@ -121,7 +121,7 @@
                     <label for="Aadhar" class="form-label">Aadhar Number* :-</label>
                 </div>
                 <div class="col-8 ps-0 mb-3">
-                    <input type="text" name="aadhar" maxlength="12" minlength="12" class="form-control" id="Aadhar">
+                    <input type="text" name="aadhar" maxlength="12" minlength="12" class="form-control" id="Aadhar" required>
                 </div>
                 <div class="col-2"></div>
             </div>
@@ -133,7 +133,7 @@
                     <label for="Address" class="form-label">Address* :-</label>
                 </div>
                 <div class="col-9 ps-0 mb-3">
-                    <input type="text" name="address" maxLength="102" class="form-control" id="Address">
+                    <input type="text" name="address" maxLength="102" class="form-control" id="Address" required>
                 </div>
                 <div class="col-2"></div>
 
@@ -141,21 +141,21 @@
                     <label for="City" class="form-label">City* :-</label>
                 </div>
                 <div class="col-2 ps-0 mb-3">
-                    <input type="text" name="city" maxlength="48" class="form-control" id="City">
+                    <input type="text" name="city" maxlength="48" class="form-control" id="City" required>
                 </div>
 
                 <div class="col-1 pe-0 py-1">
                     <label for="State" class="form-label">State* :-</label>
                 </div>
                 <div class="col-2 ps-0 mb-3">
-                    <input type="text" name="state" maxlength="48" class="form-control" id="State">
+                    <input type="text" name="state" maxlength="48" class="form-control" id="State" required>
                 </div>
 
                 <div class="col-1 pe-0 py-1">
                     <label for="PIN"  class="form-label">Pin Code* :-</label>
                 </div>
                 <div class="col-2 ps-0 mb-3">
-                    <input type="text" name="pincode" maxlength="6" class="form-control" id="PIN">
+                    <input type="text" name="pincode" maxlength="6" class="form-control" id="PIN" required>
                 </div>
                 <div class="col-3"></div>
                 
@@ -164,7 +164,7 @@
                 </div>
 
                 <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="poa" id="Passport">
+                    <input class="form-check-input" type="radio" name="poa" id="Passport" required>
                     <label class="form-check-label" for="Passport">
                         Passport
                     </label>
@@ -252,7 +252,7 @@
                     </label>
                 </div>
                 <div class="col-3 py-1">
-                    <input name="mail" type="email" class="form-control" id="Email_Id">
+                    <input name="mail" type="email" class="form-control" id="Email_Id" required>
                 </div>
             </div>
             
@@ -264,7 +264,7 @@
                 </div>
 
                 <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="income" id="L1">
+                    <input class="form-check-input" type="radio" name="income" id="L1" required>
                     <label class="form-check-label" for="L1">
                         Less than 1 Lakh
                     </label>
@@ -299,7 +299,7 @@
                 </div>
 
                 <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="occupation" id="Private_Sector">
+                    <input class="form-check-input" type="radio" name="occupation" id="Private_Sector" required>
                     <label class="form-check-label" for="Private_Sector">
                         Private Sector
                     </label>
