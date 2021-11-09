@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+<!-- Result template design -->
+
+{% block body %}
+
+<div class="container">
+  <h1 class="display-6 ms-3 mt-3">{{ the_title }}</h1>
+  <h2 class="ms-3 mt-3">You submitted the following data:</h2>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>KYC number</th>
+        <th>{{ s_kyc }}</th>
+      </tr>
+
+      <tr>
+        <th>Name:</th>
+        <th>{{ s_name }}</th>
+      </tr>
+      <tr>
+        <th>Father/Spouse Name:</th>
+        <th>{{ s_fsname }}</th>
+      </tr>
+      <tr>
+        <th>Gender:</th>
+        <th>{{ s_gender }}</th>
+      </tr>
+      <tr>
+        <th>Marital Status:</th>
+        <th>{{ s_marital }}</th>
+      </tr>
+      <tr>
+        <th>Date of Birth:</th>
+        <th>{{ s_dob }}</th>
+      </tr>
+      <tr>
+        <th>PAN:</th>
+        <th>{{ s_pan }}</th>
+      </tr>
+      <tr>
+        <th>Aadhar:</th>
+        <th>{{ s_aadhar }}</th>
+      </tr>
+      <tr>
+        <th>Address:</th>
+        <th>{{ s_address }}</th>
+      </tr>
+      <tr>
+        <th>City/Town/Village:</th>
+        <th>{{ s_city }}</th>
+      </tr>
+      <tr>
+        <th>State:</th>
+        <th>{{ s_state }}</th>
+      </tr>
+      <tr>
+        <th>Postal Code:</th>
+        <th>{{ s_pincode }}</th>
+      </tr>
+      <tr>
+        <th>Proof of Address:</th>
+        <th>{{ s_poa }}</th>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <th>{{ s_email }}</th>
+      </tr>
+      <tr>
+        <th>Telephone:</th>
+        <th>{{ s_tel }}</th>
+      </tr>
+      <tr>
+        <th>Mobile:</th>
+        <th>{{ s_mobile }}</th>
+      </tr>
+      <tr>
+        <th>Income:</th>
+        <th>{{ s_income }}</th>
+      </tr>
+      <tr>
+        <th>Occupation:</th>
+        <th>{{ s_occupation }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

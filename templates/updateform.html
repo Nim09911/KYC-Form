@@ -8,34 +8,20 @@
 <div class="error-msg" , style="color: red">{{ error }}</div>
 {% endif %}
 
-<form method="POST" action="/result">
+<form method="POST" action="/updateresult">
 
-  <h1 class="display-6 ms-3">Use this form to submit your KYC details:</h1>
+  <h1 class="display-6 ms-3">Use this form to UPDATE KYC details:</h1>
 
     <!-- <form> -->
         <div class="container">
             <h4 class="display-6 mb-4">A. Identity</h4>
             <div class="row ms-3">
                 <div class="col-2 pe-0 py-1">
-                    <label for="Name" class="form-label">Name of the Applicant* :-</label>
+                    <label for="kyc" class="form-label">KYC No* :-</label>
                 </div>
                 <div class="col-8 ps-0 mb-3">
-                    <input type="text" name="name" maxLength="48" class="form-control" id="applicantName" required>
+                    <input type="text" name="kycno" maxLength="14" minlength="14" class="form-control" id="kycno" required>
                 </div>
-                <div class="col-2">
-                    <div id="nameHelp" class="form-text"> (Max 48 chracters )</div>
-                </div>
-
-                <div class="col-2 pe-0 py-1">
-                    <label for="G Name" class="form-label">Fathers/Spouse Name* :-</label>
-                </div>
-                <div class="col-8 ps-0 mb-3">
-                    <input type="text" name="fsname" maxLength="48" class="form-control" id="gaurdianName" required>
-                </div>
-                <div class="col-2">
-                    <div id="nameHelp" class="form-text"> (Max 48 chracters )</div>
-                </div>
-
                 <div class="col-2 pe-0 py-1 mb-3">
                     <label for="martialStatus" class="form-label">Martial Status* :-</label>
                 </div>
@@ -52,54 +38,6 @@
                     </label>
                 </div>
                 <div class="col-4"></div>
-
-                <div class="col-2 pe-0 py-1 mb-3">
-                    <label for="gender" class="form-label">Gender* :-</label>
-                </div>
-                <div class="col-3">
-                    <input class="form-check-input" type="radio" name="gender" value="Male" id="Male" required>
-                    <label class="form-check-label" for="Male">
-                        Male
-                    </label>
-                </div>
-                <div class="col-3">
-                    <input class="form-check-input" type="radio" name="gender" value="Female" id="Female">
-                    <label class="form-check-label" for="Female">
-                        Female
-                    </label>
-                </div>
-                <div class="col-4"></div>
-
-                <div class="col-2 pe-0 py-1 mb-3">
-                    <label for="dob" class="form-label">Date of Birth* :-</label>
-                </div>
-                <div class="col-8 ps-0">
-                    <div class="input-group date" id="datepicker" onclick="$(this).datepicker({format: 'yyyy-mm-dd'});">
-                        <input type="text" name="dob" class="form-control">
-                        <span class="input-group-append">
-                            <span class="input-group-text bg-white d-block" ">
-                                <i class="fa fa-calendar"></i>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-2 pe-0 py-1 mb-3"></div>
-
-                <div class="col-2 pe-0 py-1">
-                    <label for="PAN" class="form-label">PAN number* :-</label>
-                </div>
-                <div class="col-8 ps-0 mb-3">
-                    <input type="text" name="pan" maxlength="10" minlength="10" class="form-control" id="PAN" required>
-                </div>
-                <div class="col-2"></div>
-
-                <div class="col-2 pe-0 py-1">
-                    <label for="Aadhar" class="form-label">Aadhar Number* :-</label>
-                </div>
-                <div class="col-8 ps-0 mb-3">
-                    <input type="text" name="aadhar" maxlength="12" minlength="12" class="form-control" id="Aadhar" required>
-                </div>
-                <div class="col-2"></div>
             </div>
 
             <!-- B. Address Details -->
@@ -109,7 +47,7 @@
                     <label for="Address" class="form-label">Address* :-</label>
                 </div>
                 <div class="col-9 ps-0 mb-3">
-                    <input type="text" name="address" maxLength="102" class="form-control" id="Address" required>
+                    <input type="text" name="address" maxLength="102" class="form-control" id="Address">
                 </div>
                 <div class="col-2">
                     <div id="nameHelp" class="form-text"> (Max 48 chracters )</div>
@@ -119,21 +57,21 @@
                     <label for="City" class="form-label">City* :-</label>
                 </div>
                 <div class="col-2 ps-0 mb-3">
-                    <input type="text" name="city" maxlength="48" class="form-control" id="City" required>
+                    <input type="text" name="city" maxlength="48" class="form-control" id="City">
                 </div>
 
                 <div class="col-1 pe-0 py-1">
                     <label for="State" class="form-label">State* :-</label>
                 </div>
                 <div class="col-2 ps-0 mb-3">
-                    <input type="text" name="state" maxlength="48" class="form-control" id="State" required>
+                    <input type="text" name="state" maxlength="48" class="form-control" id="State">
                 </div>
 
                 <div class="col-1 pe-0 py-1">
                     <label for="PIN"  class="form-label">Pin Code* :-</label>
                 </div>
                 <div class="col-2 ps-0 mb-3">
-                    <input type="text" name="pincode" maxlength="6" class="form-control" id="PIN" required>
+                    <input type="text" name="pincode" maxlength="6" class="form-control" id="PIN">
                 </div>
                 <div class="col-3"></div>
                 
@@ -200,6 +138,12 @@
                     <input class="form-check-input" type="radio" name="poa" value="Latest Bank Statement" id="Latest Bank Statement">
                     <label class="form-check-label" for="Latest Bank Statement">
                         Latest Bank Statement
+                    </label>
+                </div>
+                <div class="col-2 pe-0 pb-1">
+                    <input class="form-check-input" type="radio" name="poa" value="" id="No Change" required>
+                    <label class="form-check-label" for="No Change">
+                        No Change
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1"></div>
