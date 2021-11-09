@@ -19,9 +19,14 @@ app = Flask(__name__)
 
 #* MySQL conection and configuration
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_PASSWORD'] = 'Ashumysql@10'
 app.config['MYSQL_DATABASE_DB'] = 'kyc'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+
+# app.config['MYSQL_DATABASE_USER'] = 'root'
+# app.config['MYSQL_DATABASE_PASSWORD'] = ''
+# app.config['MYSQL_DATABASE_DB'] = 'kyc'
+# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql = MySQL(app)
 
 try:
@@ -63,16 +68,16 @@ def data():
     if(validator.name_validation(name) and validator.name_validation(father_spouse_name) and validator.pan_validation(pan)):
         
         kycno = random.randint(10000000000000, 99999999999999)
-        query = "SELECT KYCNO FROM IDENTITY_DETAILS;"
-        db.execute(query)
-        while(kycno in db.fetchall()):
-            kycno = random.randint(10000000000000, 99999999999999)
+        # query = "SELECT KYCNO FROM IDENTITY_DETAILS;"
+        # db.execute(query)
+        # while(kycno in db.fetchall()):
+        #     kycno = random.randint(10000000000000, 99999999999999)
         
-        query = f"SELECT DISTINCT PAN FROM IDENTITY_DETAILS WHERE PAN = {pan};"
-        db.execute(query)
-        for(PAN) in db:
-            if(pan in PAN):
-                return render_template('/home.html', error='Invalid Identity details filled', the_title='KYC Form Entry')
+        # query = f"SELECT DISTINCT PAN FROM IDENTITY_DETAILS WHERE PAN = {pan};"
+        # db.execute(query)
+        # for(PAN) in db:
+        #     if(pan in PAN):
+        #         return render_template('/home.html', error='Invalid Identity details filled', the_title='KYC Form Entry')
 
         
         query = f"INSERT INTO IDENTITY_DETAILS (KYCNO, CUSTOMER_NAME, FS_NAME, GENDER, MARITAL_STATUS, DOB, PAN, AADHAR) VALUES ('{kycno}', '{name}', '{father_spouse_name}', '{gender}', '{marital_status}', '{dob}', '{pan}', '{aadhar}');"
