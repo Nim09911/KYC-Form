@@ -19,15 +19,16 @@ logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 
 #* MySQL conection and configuration
+#app.config['MYSQL_DATABASE_USER'] = 'root'
+#app.config['MYSQL_DATABASE_PASSWORD'] = 'Ashumysql@10'
+#app.config['MYSQL_DATABASE_DB'] = 'kyc'
+#app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Ashumysql@10'
+app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'kyc'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
-# app.config['MYSQL_DATABASE_USER'] = 'root'
-# app.config['MYSQL_DATABASE_PASSWORD'] = ''
-# app.config['MYSQL_DATABASE_DB'] = 'kyc'
-# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql = MySQL(app)
 
 try:
@@ -59,8 +60,8 @@ def data():
     pincode = request.form['pincode']
     address_proof = request.form['poa']
     #! change telephone and mobile after changes in UI
-    telephone = str(request.form['tel1']) + str(request.form['tel2']) + str(request.form['tel3']) or ""
-    mobile = str(request.form['mobile1']) + str(request.form['mobile2']) or ""
+    telephone = str(request.form['tel1']) or ""
+    mobile = str(request.form['mobile1']) or ""
     email = request.form['mail']
     income = request.form['income']
     occupation = request.form['occupation']
@@ -203,6 +204,7 @@ def viewresult():
     except:
         logging.info('Record does not exist -> enter error message')
         return render_template('/view.html')
+
 
 if __name__ ==  '__main__': 
     app.run(debug=True)
