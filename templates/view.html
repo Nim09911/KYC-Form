@@ -11,8 +11,39 @@
 {% endif %}
 
 <form method="POST" action="/viewresult">
-  <table>
-    <p>A. Identity</p>
+  <div class="container">
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <h4 class="display-6 my-4">Enter the KYC Number to view the details</h4>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2"></div>
+      <div class="d-flex justify-content-center col-8">
+        <input
+          type="text"
+          class="form-control"
+          name="kycno"
+          maxlength="14"
+          minlength="14"
+          required
+          id="kycno"
+          placeholder="Max 14 digits"
+        />
+      </div>
+      <div class="col-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="d-grid gap-2 col-4 mt-3">
+        <button class="btn btn-success" value="submit" type="submit">
+          Submit
+        </button>
+      </div>
+      <div class="col-4"></div>
+    </div>
+  </div>
+  <!-- <table>
     <tr>
       <td>Enter KYC Number:</td>
       <td>
@@ -32,7 +63,7 @@
         <input value="Submit" type="submit" />
       </td>
     </tr>
-  </table>
+  </table> -->
 </form>
 
 {% endblock %}
