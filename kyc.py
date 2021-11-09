@@ -80,18 +80,19 @@ def data():
         return True        
         
     kycno = random.randint(10000000000000, 99999999999999)
-    '''
     query = "SELECT KYCNO FROM IDENTITY_DETAILS;"
     db.execute(query)
-    while(kycno in db.fetchall()):
+    nums = [item[0] for item in db.fetchall()]
+    while(kycno in nums):
+        logging.info('kycno already exists')
         kycno = random.randint(10000000000000, 99999999999999)
 
-    query = f"SELECT DISTINCT PAN FROM IDENTITY_DETAILS WHERE PAN = {pan};"
+    query = f"SELECT PAN FROM IDENTITY_DETAILS;"
     db.execute(query)
-    for(PAN) in db:
-        if(pan in PAN):
-            return render_template('/home.html', error='Invalid Identity details filled', the_title='KYC Form Entry')
-    '''
+    pans = [item[0] for item in db.fetchall()]
+    if(pan in pans):
+        logging.info('PAN already exists')
+        return render_template('/home.html', error='Data already exists', the_title='KYC Form Entry')
     
     if(validation_identity()):
         query = f"INSERT INTO IDENTITY_DETAILS (KYCNO, CUSTOMER_NAME, FS_NAME, GENDER, MARITAL_STATUS, DOB, PAN, AADHAR) VALUES ('{kycno}', '{name}', '{father_spouse_name}', '{gender}', '{marital_status}', '{dob}', '{pan}', '{aadhar}');"
