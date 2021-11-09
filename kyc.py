@@ -46,7 +46,6 @@ def data():
     gender = request.form['gender']
     marital_status = request.form['maritalstatus']
     dob = request.form['dob']
-    print(dob, type(dob))
     pan = request.form['pan']
     aadhar = request.form['aadhar']
     address = request.form['address']
@@ -112,9 +111,8 @@ def data():
                     db.execute(query)
                 except:
                     return render_template('/home.html', error='Invalid Other details filled', the_title='KYC Form Entry')
-        
-            conn.commit()
-            return render_template('result.html',
+                conn.commit()
+                return render_template('result.html',
                                 s_kyc = kycno,
                                 s_name = name,
                                 s_fsname = father_spouse_name, 
@@ -135,6 +133,10 @@ def data():
                                 s_occupation = occupation,
                                 the_title = title, 
         )
+            else:
+                return render_template('/home.html', error='Invalid Other details filled', the_title='KYC Form Entry')
+        else:
+            return render_template('/home.html', error='Invalid Address details filled', the_title='KYC Form Entry')
     else:
         return render_template('/home.html', error='Invalid Identity information filled', the_title='KYC Form entry')
 
@@ -171,7 +173,6 @@ def viewresult():
         db.execute(query)
         for(KYCNO, INCOME, OCCUPATION) in db:
             income, occupation = INCOME, OCCUPATION
-            print(income)
         title = f'Form Data for {kycno}'
         return render_template('/viewresult.html',
                         s_kyc = kycno,
