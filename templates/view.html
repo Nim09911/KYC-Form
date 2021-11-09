@@ -6,7 +6,7 @@
 
 <h2>{{ the_title }}</h2>
 
-<form method ='POST' action ='/result' ></form>
+<form method ='POST' action ='/viewresult' >
 
 <table>
     <p>A. Identity</p>
@@ -14,5 +14,12 @@
         <td> Enter KYC Number: </td>
         <td> <input name = 'kycno' type = 'text' width = '120' placeholder='14digits' maxlength='14' minlength="14" required></td>
     </tr>
-    <p> <input value = 'Submit' type = 'submit'> </p>
+    <tr>
+        <td>
+            <input value = 'Submit' type = 'submit'>
+        </td>
+    </tr>
 </table>
+</form>
+
+{% endblock %}

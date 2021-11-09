@@ -38,7 +38,7 @@ def entry():
     return render_template('/home.html',
                             the_title = 'KYC Form Entry')
 
-@app.route('/result', methods = ['POST', 'GET'])
+@app.route('/result', methods = ['POST'])
 def data():
     name = request.form['name']
     father_spouse_name = request.form['fsname']
@@ -82,7 +82,7 @@ def data():
         except:
             return render_template('/home.html', error='Invalid Address details filled', the_title='KYC Form Entry')
         
-        query = f"INSERT INTO OTHER_DETAILS (KYCNO, PAN, INCOME, OCCUPATION) VALUES ('{kycno}', '{pan}', '{income}', '{occupation}');"
+        query = f"INSERT INTO OTHER_DETAILS (KYCNO, INCOME, OCCUPATION) VALUES ('{kycno}', '{income}', '{occupation}');"
         try:
             db.execute(query)
         except:
@@ -110,36 +110,63 @@ def data():
     else:
         return render_template('/home.html', error='Invalid information filled', the_title='KYC Form entry')
 
-'''
-@app.route('/view', methods = ['GET'])
+
+@app.route('/view')
 def view():
+    logging.debug('now rendering view.html')
+    return render_template('/view.html')
 
-    kycno = request.form['kycno']
-    query = "SELECT KYCNO FROM IDENTITY_DETAILS WHERE KYCNO = '{kycno}';"
-    db.execute()
-    if(kycno in db.fetchall()):
-        #! TRIPLE INNER JOIN QUERY FOR ALL THE DATA
-        query = "SELECT"
+@app.route('/viewresult', methods = ['POST'])
+def viewresult():
+    logging.debug('viewresult has been called')
+    kycno = int(request.form['kycno'])
+    #* NATURAL JOIN OF ALL TABLES ISNOT WORKING
 
-        return render_template('result.html',
-                            s_kyc = kycno,
-                            s_name = name,
-                            s_fsname = father_spouse_name, 
-                            s_gender = gender,
-                            s_marital = marital_status,
-                            s_dob = dob,
-                            s_pan = pan,
-                            s_aadhar = aadhar,
-                            s_address = address,
-                            s_city = city,
-                            s_state = state,
-                            s_pincode = pincode,
-                            s_poa = address_proof,
-                            s_income = income,
-                            s_occupation = occupation,
-                            the_title = title, 
-    )
-'''
+    try:
+        query = f"SELECT * FROM IDENTITY_DETAILS WHERE KYCNO = '{kycno}';"
+        db.execute(query)
+        for (KYCNO, CUSTOMER_NAME, FS_NAME, MARITAL_STATUS, GENDER, DOB, PAN, AADHAR) in db:
+            kycno, name, father_spouse_name, marital_status, gender, dob, pan, aadhar = KYCNO, CUSTOMER_NAME, FS_NAME, MARITAL_STATUS, GENDER, DOB, PAN, AADHAR
+        
+        query = f"SELECT * FROM ADDRESS_DETAILS WHERE KYCNO = '{kycno}';"
+        db.execute(query)
+        for(KYCNO, HOME_ADDRESS, CITY, STATE_NAME, POSTAL_CODE, EMAIL, TELEPHONE, MOBILE) in db:
+            address, city, state, pincode, email = HOME_ADDRESS, CITY, STATE_NAME, POSTAL_CODE, EMAIL
+            telephone = TELEPHONE
+            if(telephone is None):
+                telephone = 'None'
+            mobile = MOBILE
+            if(mobile is None):
+                mobile = 'None'
+        
+        query = f"SELECT * FROM OTHER_DETAILS WHERE KYCNO = '{kycno}';"
+        db.execute(query)
+        for(KYCNO, INCOME, OCCUPATION) in db:
+            income, occupation = INCOME, OCCUPATION
+            print(income)
+        title = f'Form Data for {kycno}'
+        return render_template('/viewresult.html',
+                        s_kyc = kycno,
+                        s_name = name,
+                        s_fsname = father_spouse_name, 
+                        s_gender = gender,
+                        s_marital = marital_status,
+                        s_dob = dob,
+                        s_pan = pan,
+                        s_aadhar = aadhar,
+                        s_address = address,
+                        s_city = city,
+                        s_state = state,
+                        s_pincode = pincode,
+                        s_poa = 'Pending for approval',
+                        s_income = income,
+                        s_occupation = occupation,
+                        the_title = title, 
+        )
+    except:
+        logging.info('Record does not exist -> enter error message')
+        return render_template('/view.html')
+
 if __name__ ==  '__main__': 
     app.run(debug=True)
 

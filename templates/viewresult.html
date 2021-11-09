@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+	<!-- Result template design -->
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<p> You submitted the following data: </p>
+
+<table>
+	<tr>
+		<td> KYC number: </td>
+		<td> {{ s_kyc }}</td>
+	</tr>
+	<tr>
+		<td> Name: </td>
+		<td> {{ s_name }}</td>
+	</tr>
+	<tr>
+		<td> Father/Spouse Name: </td>
+		<td> {{ s_fsname }}</td>
+	</tr>
+	<tr>
+		<td> Gender: </td>
+		<td> {{ s_gender }}</td>
+	</tr>
+	<tr>
+		<td> Marital Status: </td>
+		<td> {{ s_marital }}</td>
+	</tr>
+	<tr>
+		<td> Date of Birth: </td>
+		<td> {{ s_dob }}</td>
+	</tr>
+	<tr>
+		<td> PAN: </td>
+		<td> {{ s_pan }}</td>
+	</tr>
+	<tr>
+		<td> Aadhar: </td>
+		<td> {{ s_aadhar }}</td>
+	</tr>
+	<tr>
+		<td> Address: </td>
+		<td> {{ s_address }}</td>
+	</tr>
+	<tr>
+		<td> City/Town/Village: </td>
+		<td> {{ s_city }}</td>
+	</tr>
+	<tr>
+		<td> State: </td>
+		<td> {{ s_state }}</td>
+	</tr>
+	<tr>
+		<td> Postal Code: </td>
+		<td> {{ s_pincode }}</td>
+	</tr>
+	<tr>
+		<td> Proof of Address: </td>
+		<td> {{ s_poa }}</td>
+	</tr>
+	<tr>
+		<td> Income: </td>
+		<td> {{ s_income }}</td>
+	</tr>
+	<tr>
+		<td> Occupation: </td>
+		<td> {{ s_occupation }}</td>
+	</tr>
+
+</table>
+
+{% endblock %}
