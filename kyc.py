@@ -67,8 +67,13 @@ def data():
         db.execute(query)
         while(kycno in db.fetchall()):
             kycno = random.randint(10000000000000, 99999999999999)
+        
+        query = f"SELECT DISTINCT PAN FROM IDENTITY_DETAILS WHERE PAN = {pan};"
+        db.execute(query)
+        for(PAN) in db:
+            if(pan in PAN):
+                return render_template('/home.html', error='Invalid Identity details filled', the_title='KYC Form Entry')
 
-        #! randomly generate KYCNO and check if its not already in table
         
         query = f"INSERT INTO IDENTITY_DETAILS (KYCNO, CUSTOMER_NAME, FS_NAME, GENDER, MARITAL_STATUS, DOB, PAN, AADHAR) VALUES ('{kycno}', '{name}', '{father_spouse_name}', '{gender}', '{marital_status}', '{dob}', '{pan}', '{aadhar}');"
         try:
@@ -103,6 +108,9 @@ def data():
                                 s_state = state,
                                 s_pincode = pincode,
                                 s_poa = address_proof,
+                                s_email = email,
+                                s_tel = telephone,
+                                s_mobile = mobile,
                                 s_income = income,
                                 s_occupation = occupation,
                                 the_title = title, 
@@ -159,6 +167,9 @@ def viewresult():
                         s_state = state,
                         s_pincode = pincode,
                         s_poa = 'Pending for approval',
+                        s_email = email,
+                        s_tel = telephone,
+                        s_mobile = mobile,
                         s_income = income,
                         s_occupation = occupation,
                         the_title = title, 
