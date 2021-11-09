@@ -4,37 +4,13 @@
 
 {% block body %}
 
-<h2>{{ the_title }}</h2>
-
 {% if error %}
 <div class="error-msg" , style="color: red">{{ error }}</div>
 {% endif %}
 
 <form method="POST" action="/result">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"> <h2>Project</h1></a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="/"> <h5> Home</h5></a>
-          <a class="nav-link active" href="/kycform"><h5> KYC Form </h5></a>
-          <a class="nav-link active" href="/view"><h5> View </h5></a>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <h1 class="display-6">Use this form to submit your KYC details:</h1>
+
+  <h1 class="display-6 ms-3">Use this form to submit your KYC details:</h1>
 
     <!-- <form> -->
         <div class="container">
@@ -51,7 +27,7 @@
                 </div>
 
                 <div class="col-2 pe-0 py-1">
-                    <label for="G_Name" class="form-label">Fathers/Spouse Name* :-</label>
+                    <label for="G Name" class="form-label">Fathers/Spouse Name* :-</label>
                 </div>
                 <div class="col-8 ps-0 mb-3">
                     <input type="text" name="fsname" maxLength="48" class="form-control" id="gaurdianName" required>
@@ -64,13 +40,13 @@
                     <label for="martialStatus" class="form-label">Martial Status* :-</label>
                 </div>
                 <div class="col-3">
-                    <input class="form-check-input" type="radio" name="maritalstatus" id="Married" required>
+                    <input class="form-check-input" type="radio" name="maritalstatus" value="Married" id="Married" required>
                     <label class="form-check-label" for="Married">
                         Married
                     </label>
                 </div>
                 <div class="col-3">
-                    <input class="form-check-input" type="radio" name="maritalstatus" id="Single">
+                    <input class="form-check-input" type="radio" name="maritalstatus" value="Single" id="Single">
                     <label class="form-check-label" for="Single">
                         Single
                     </label>
@@ -81,13 +57,13 @@
                     <label for="gender" class="form-label">Gender* :-</label>
                 </div>
                 <div class="col-3">
-                    <input class="form-check-input" type="radio" name="gender" id="Male" required>
+                    <input class="form-check-input" type="radio" name="gender" value="Male" id="Male" required>
                     <label class="form-check-label" for="Male">
                         Male
                     </label>
                 </div>
                 <div class="col-3">
-                    <input class="form-check-input" type="radio" name="gender" id="Female">
+                    <input class="form-check-input" type="radio" name="gender" value="Female" id="Female">
                     <label class="form-check-label" for="Female">
                         Female
                     </label>
@@ -135,7 +111,9 @@
                 <div class="col-9 ps-0 mb-3">
                     <input type="text" name="address" maxLength="102" class="form-control" id="Address" required>
                 </div>
-                <div class="col-2"></div>
+                <div class="col-2">
+                    <div id="nameHelp" class="form-text"> (Max 48 chracters )</div>
+                </div>
 
                 <div class="col-1 pe-0 py-1">
                     <label for="City" class="form-label">City* :-</label>
@@ -164,63 +142,63 @@
                 </div>
 
                 <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="poa" id="Passport" required>
+                    <input class="form-check-input" type="radio" name="poa" value="Passport" id="Passport" required>
                     <label class="form-check-label" for="Passport">
                         Passport
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" id="Ration Card">
+                    <input class="form-check-input" type="radio" name="poa" value="Ration Card" id="Ration Card">
                     <label class="form-check-label" for="Ration Card">
                         Ration Card
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" id="Registered Lease">
+                    <input class="form-check-input" type="radio" name="poa" value="Registered Lease" id="Registered Lease">
                     <label class="form-check-label" for="Registered Lease">
                         Registered Lease
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" id="Driving License">
+                    <input class="form-check-input" type="radio" name="poa" value="Driving License" id="Driving License">
                     <label class="form-check-label" for="Driving License">
                         Driving License
                     </label>
                 </div>
                 <div class="col-3 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" id="Residence Sale Agreement">
+                    <input class="form-check-input" type="radio" name="poa" value="Residence Sale Agreement"id="Residence Sale Agreement">
                     <label class="form-check-label" for="Residence Sale Agreement">
                         Residence Sale Agreement
                     </label>
                 </div>
 
                 <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="poa" id="Voter ID">
+                    <input class="form-check-input" type="radio" name="poa" value="Voter ID" id="Voter ID">
                     <label class="form-check-label" for="Voter ID">
                         Voter ID
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" id="Latest_Telephone_Bill">
-                    <label class="form-check-label" for="Latest_Telephone_Bill">
+                    <input class="form-check-input" type="radio" name="poa" value="Latest Telephone Bil" id="Latest Telephone Bill">
+                    <label class="form-check-label" for="Latest Telephone Bill">
                         Latest Telephone Bill
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" id="Latest_Electricity_Bill">
-                    <label class="form-check-label" for="Latest_Electricity_Bill">
+                    <input class="form-check-input" type="radio" name="poa" value="Latest Electricity Bil" id="Latest Electricity Bill">
+                    <label class="form-check-label" for="Latest Electricity Bill">
                         Latest Electricity Bill
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" id="Latest_Gas_Bill">
-                    <label class="form-check-label" for="Latest_Gas_Bill">
+                    <input class="form-check-input" type="radio" name="poa" value="Latest Gas Bill" id="Latest Gas Bill">
+                    <label class="form-check-label" for="Latest Gas Bill">
                         Latest Gas Bill
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" id="Latest_Bank_Statement">
-                    <label class="form-check-label" for="Latest_Bank_Statement">
+                    <input class="form-check-input" type="radio" name="poa" value="Latest Bank Statement" id="Latest Bank Statement">
+                    <label class="form-check-label" for="Latest Bank Statement">
                         Latest Bank Statement
                     </label>
                 </div>
@@ -230,29 +208,29 @@
                     <!-- <label for="Contact" class="form-label">Contact Details </label> -->
                 </div>
                 <div class="col-2 py-1">
-                    <label class="form-check-label" for="Telephone_Number">
+                    <label class="form-check-label" for="Telephone Number">
                         Telephone Number :-
                     </label>
                 </div>
                 <div class="col-3 py-1">
-                    <input type="text" name="tel1" maxlength="10" class="form-control" id="Telephone_Number">
+                    <input type="text" name="tel1" maxlength="11" class="form-control" id="Telephone Number">
                 </div>
                 <div class="col-2 py-1">
-                    <label class="form-check-label" for="Mobile_Number">
+                    <label class="form-check-label" for="Mobile Number">
                         Mobile Number :-
                     </label>
                 </div>
                 <div class="col-3 py-1">
-                    <input type="text" name="mobile1" maxlength="9" class="form-control" id="Mobile_Number">
+                    <input type="text" name="mobile1" maxlength="10" class="form-control" id="Mobile Number">
                 </div>
                 <div class="col-2 py-1"></div>
                 <div class="col-2 py-1">
-                    <label class="form-check-label" for="Email_Id">
+                    <label class="form-check-label" for="Email Id">
                         Email Id :-
                     </label>
                 </div>
                 <div class="col-3 py-1">
-                    <input name="mail" type="email" class="form-control" id="Email_Id" required>
+                    <input name="mail" type="email" class="form-control" id="Email Id" required>
                 </div>
             </div>
             
@@ -264,31 +242,31 @@
                 </div>
 
                 <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="income" id="L1" required>
+                    <input class="form-check-input" type="radio" name="income" value="Less than 1 Lakh" id="L1" required>
                     <label class="form-check-label" for="L1">
                         Less than 1 Lakh
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="income" id="1T5">
+                    <input class="form-check-input" type="radio" name="income" value="1 to 5 Lakhs" id="1T5">
                     <label class="form-check-label" for="1T5">
                         1 to 5 Lakhs
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="income" id="5T10">
+                    <input class="form-check-input" type="radio" name="income" value="5 to 10 Lakhs" id="5T10">
                     <label class="form-check-label" for="5T10">
                         5 to 10 Lakhs
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="income" id="10T25">
+                    <input class="form-check-input" type="radio" name="income" value="10 to 25 Lakhs" id="10T25">
                     <label class="form-check-label" for="10T25">
                         10 to 25 Lakhs
                     </label>
                 </div>
                 <div class="col-3 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="income" id="M25">
+                    <input class="form-check-input" type="radio" name="income" value="More than 25 lakhs" id="M25">
                     <label class="form-check-label" for="M25">
                         More than 25 lakhs
                     </label>
@@ -299,62 +277,62 @@
                 </div>
 
                 <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="occupation" id="Private_Sector" required>
-                    <label class="form-check-label" for="Private_Sector">
+                    <input class="form-check-input" type="radio" name="occupation" value="Private Sector" id="Private Sector" required>
+                    <label class="form-check-label" for="Private Sector">
                         Private Sector
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" id="Public_Sector">
-                    <label class="form-check-label" for="Public_Sector">
+                    <input class="form-check-input" type="radio" name="occupation" value="Public Sector" id="Public Sector">
+                    <label class="form-check-label" for="Public Sector">
                         Public Sector
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" id="Government_Sector">
-                    <label class="form-check-label" for="Government_Sector">
+                    <input class="form-check-input" type="radio" name="occupation" value="Government Sector" value="Government Sector">
+                    <label class="form-check-label" for="Government Sector">
                         Government Sector
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" id="Business">
+                    <input class="form-check-input" type="radio" name="occupation" value="Business" id="Business">
                     <label class="form-check-label" for="Business">
                         Business
                     </label>
                 </div>
                 <div class="col-3 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" id="Professional">
+                    <input class="form-check-input" type="radio" name="occupation" value="Professional" id="Professional">
                     <label class="form-check-label" for="Professional">
                         Professional
                     </label>
                 </div>
 
                 <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="occupation" id="Agriculturist">
+                    <input class="form-check-input" type="radio" name="occupation" value="Agriculturist" id="Agriculturist">
                     <label class="form-check-label" for="Agriculturist">
                         Agriculturist
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" id="Retired">
+                    <input class="form-check-input" type="radio" name="occupation" value="Retired" id="Retired">
                     <label class="form-check-label" for="Retired">
                         Retired
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" id="Housewife">
+                    <input class="form-check-input" type="radio" name="occupation" value="Housewife" id="Housewife">
                     <label class="form-check-label" for="Housewife">
                         Housewife
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" id="Student">
+                    <input class="form-check-input" type="radio" name="occupation" value="Student" id="Student">
                     <label class="form-check-label" for="Student">
                         Student
                     </label>
                 </div>
                 <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" id="Others">
+                    <input class="form-check-input" type="radio" name="occupation" value="Others" id="Others">
                     <label class="form-check-label" for="Others">
                         Others
                     </label>
