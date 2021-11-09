@@ -24,14 +24,25 @@ def name_validation(name):
     else:
         return False
 
+def telephone_validation(tele):
+    if re.match('^\d{10}$', tele) or re.match('^0\d{10}$', tele) or tele == '':
+        return True
+    return False
 
 def phone_validation(phno):
-    if re.match('^\d{10}$', phno):
+    if re.match('^\d{10}$', phno) or phno == '':
         return True
     return False
 
 
-def dob_validation(day, month, year):
+def dob_validation(dob):
+    year, month, day = dob.split('-')
+    try:
+        year = int(year)
+        month = int(month)
+        day = int(day)
+    except ValueError:
+        return False
     today = date.today()
     x, y, z = today.strftime("%d %m %Y").split()
     x, y, z = int(x), int(y), int(z)
@@ -48,3 +59,4 @@ def pin_validation(pin):
     if re.match('^\d{6}$', pin):
         return True
     return False
+
