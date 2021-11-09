@@ -67,76 +67,138 @@ pin_test = {
 def test_pan(pan,status):
     try :
         assert pan_validation(pan) == status
-        print(f'Test case:  \"{pan}\" : PASSED.\nExpected : {status}\nAsserted : {pan_validation(pan)}\n')
+        print(f'Test case:  \"{pan}\" : PASSED.\nExpected : {status}\tAsserted : {pan_validation(pan)}\n')
+        return True
     except:
-        print(f'Test case:  \"{pan}\" : FAILED.\nExpected : {status}\nAsserted : {pan_validation(pan)}\n')
+        print(f'Test case:  \"{pan}\" : FAILED.\nExpected : {status}\tAsserted : {pan_validation(pan)}\n')
+        return False
 
 def test_aadhar(aadhar,status):
     try :
         assert aadhar_validation(aadhar) == status
-        print(f'Test case:  \"{aadhar}\" : PASSED.\nExpected : {status}\nAsserted : {aadhar_validation(aadhar)}\n')
+        print(f'Test case:  \"{aadhar}\" : PASSED.\nExpected : {status}\tAsserted : {aadhar_validation(aadhar)}\n')
+        return True
     except:
-        print(f'Test case:  \"{aadhar}\" : FAILED.\nExpected : {status}\nAsserted : {aadhar_validation(aadhar)}\n')
+        print(f'Test case:  \"{aadhar}\" : FAILED.\nExpected : {status}\tAsserted : {aadhar_validation(aadhar)}\n')
+        return False
  
 def test_name(name,status):
     try :
         assert name_validation(name) == status
-        print(f'Test case:  \"{name}\" : PASSED.\nExpected : {status}\nAsserted : {name_validation(name)}\n')
+        print(f'Test case:  \"{name}\" : PASSED.\nExpected : {status}\tAsserted : {name_validation(name)}\n')
+        return True
     except:
-        print(f'Test case:  \"{name}\" : FAILED.\nExpected : {status}\nAsserted : {name_validation(name)}\n')
+        print(f'Test case:  \"{name}\" : FAILED.\nExpected : {status}\tAsserted : {name_validation(name)}\n')
+        return False
 
 def test_phone(phno,status):
     try :
         assert phone_validation(phno) == status
-        print(f'Test case:  \"{phno}\" : PASSED.\nExpected : {status}\nAsserted : {phone_validation(phno)}\n')
+        print(f'Test case:  \"{phno}\" : PASSED.\nExpected : {status}\tAsserted : {phone_validation(phno)}\n')
+        return True
     except:
-        print(f'Test case:  \"{phno}\" : FAILED.\nExpected : {status}\nAsserted : {phone_validation(phno)}\n')
+        print(f'Test case:  \"{phno}\" : FAILED.\nExpected : {status}\tAsserted : {phone_validation(phno)}\n')
+        return False
  
 def test_dob(dob,status):
     try :
         assert dob_validation(dob) == status
-        print(f'Test case:  \"{dob}\" : PASSED.\nExpected : {status}\nAsserted : {dob_validation(dob)}\n')
+        print(f'Test case:  \"{dob}\" : PASSED.\nExpected : {status}\tAsserted : {dob_validation(dob)}\n')
+        return True
     except:
-        print(f'Test case:  \"{dob}\" : FAILED.\nExpected : {status}\nAsserted : {dob_validation(dob)}\n')
+        print(f'Test case:  \"{dob}\" : FAILED.\nExpected : {status}\tAsserted : {dob_validation(dob)}\n')
+        return False
     
 
 def test_pin(pin,status):   
     try :
         assert pin_validation(pin) == status
-        print(f'Test case:  \"{pin}\" : PASSED.\nExpected : {status}\nAsserted : {pin_validation(pin)}\n')
+        print(f'Test case:  \"{pin}\" : PASSED.\nExpected : {status}\tAsserted : {pin_validation(pin)}\n')
+        return True
     except:
-        print(f'Test case:  \"{pin}\" : FAILED.\nExpected : {status}\nAsserted : {pin_validation(pin)}\n')
-
-
-
+        print(f'Test case:  \"{pin}\" : FAILED.\nExpected : {status}\tAsserted : {pin_validation(pin)}\n')
+        return False
 
 
 def main():
     
-    
+    max_count = len(pan_test)
+    count, countpass, countfail = 0, 0, 0    
     print("\nTESTING PAN NUMBER\n")
     for pan in pan_test:
-        test_pan(pan,pan_test[pan])
+        count += 1
+        print(f"Case{count}/{max_count}:", end=" ")        
+        val = test_pan(pan,pan_test[pan])
+        if(val):
+            countpass += 1
+        else:
+            countfail +=1
+    print(f"Passed:{countpass}/{max_count}, Failed:{countfail}/{max_count}\n")
         
-
+    max_count = len(aadhar_test)
+    count, countpass, countfail = 0, 0, 0 
     print("\nTESTING AADHAR NUMBER\n")
     for ano in aadhar_test:
-        test_aadhar(ano,aadhar_test[ano])
-        
+        count += 1
+        print(f"Case{count}/{max_count}:", end=" ")
+        val = test_aadhar(ano,aadhar_test[ano])
+        if(val):
+            countpass += 1
+        else:
+            countfail +=1
+    print(f"Passed:{countpass}/{max_count}, Failed:{countfail}/{max_count}\n")
+
+    max_count = len(name_test)
+    count, countpass, countfail = 0, 0, 0       
     print("\nTESTING NAME\n")
     for name in name_test:
-        test_aadhar(name,name_test[name])
-    
+        count += 1
+        print(f"Case{count}/{max_count}:", end=" ")
+        val = test_name(name,name_test[name])
+        if(val):
+            countpass += 1
+        else:
+            countfail +=1
+    print(f"\nPassed:{countpass}/{max_count}, Failed:{countfail}/{max_count}\n")
+
+    max_count = len(phone_test)
+    count, countpass, countfail = 0, 0, 0  
     print("\nTESTING PHONE NUMBER\n")
     for pno in phone_test:
-        test_phone(pno,phone_test[pno])
-   
+        count += 1
+        print(f"Case{count}/{max_count}:", end=" ")
+        val = test_phone(pno,phone_test[pno])
+        if(val):
+            countpass += 1
+        else:
+            countfail +=1
+    print(f"\nPassed:{countpass}/{max_count}, Failed:{countfail}/{max_count}\n")
+
+    max_count = len(dob_test)
+    count, countpass, countfail = 0, 0, 0   
     print("\nTESTING DATE OF BIRTH\n")
     for dob in dob_test:
-        test_dob(dob,dob_test[dob])
-            
+        count += 1
+        print(f"Case{count}/{max_count}:", end=" ")
+        val = test_dob(dob,dob_test[dob])
+        if(val):
+            countpass += 1
+        else:
+            countfail +=1
+    print(f"\nPassed:{countpass}/{max_count}, Failed:{countfail}/{max_count}\n")
+
+    max_count = len(pin_test)
+    count, countpass, countfail = 0, 0, 0             
     print("\nTESTING PIN\n")
     for pin in pin_test:
-        test_pin(pin,pin_test[pin])
+        count += 1
+        print(f"Case{count}/{max_count}:", end=" ")
+        val = test_pin(pin, pin_test[pin])
+        if(val):
+            countpass += 1
+        else:
+            countfail +=1
+    print(f"\nPassed:{countpass}/{max_count}, Failed:{countfail}/{max_count}\n")
+
 if __name__ == "__main__":
     main()
