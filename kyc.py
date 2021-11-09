@@ -1,7 +1,7 @@
 
 #! Use WSL/Linux
 from flask import Flask, render_template, request, escape
-import validator
+from validator import *
 import logging, sys, random
 from flaskext.mysql import MySQL
 
@@ -11,6 +11,7 @@ logging.basicConfig(level=logging.DEBUG)
     #TODO:
         #* Images
         #* DataBase
+        #* validation while input
         #? View Data page -> input application number
         #? Update Data page -> time consuming
 '''
@@ -45,6 +46,7 @@ def data():
     gender = request.form['gender']
     marital_status = request.form['maritalstatus']
     dob = request.form['dob']
+    print(dob, type(dob))
     pan = request.form['pan']
     aadhar = request.form['aadhar']
     address = request.form['address']
@@ -52,49 +54,66 @@ def data():
     state = request.form['state']
     pincode = request.form['pincode']
     address_proof = request.form['poa']
-    telephone = str(request.form['tel1']) + str(request.form['tel2']) + str(request.form['tel3']) or None
-    mobile = str(request.form['mobile1']) + str(request.form['mobile2']) or None
+    #! change telephone and mobile after changes in UI
+    telephone = str(request.form['tel1']) + str(request.form['tel2']) + str(request.form['tel3']) or ""
+    mobile = str(request.form['mobile1']) + str(request.form['mobile2']) or ""
     email = request.form['mail']
     income = request.form['income']
     occupation = request.form['occupation']
     title = 'KYC Form filled'
 
+    def validation_identity():
+        a = name_validation(name)
+        b = name_validation(father_spouse_name)
+        c = pan_validation(pan)
+        d = aadhar_validation(aadhar)
+        e = dob_validation(dob)
+        return   a and b and c and d and e
 
-    if(validator.name_validation(name) and validator.name_validation(father_spouse_name) and validator.pan_validation(pan)):
+    def validation_address():
+        a = phone_validation(mobile)
+        b = telephone_validation(telephone)
+        c = pin_validation(pincode)
+        return a and b and c
+
+    def validation_others():
+        return True        
         
+    kycno = random.randint(10000000000000, 99999999999999)
+    '''
+    query = "SELECT KYCNO FROM IDENTITY_DETAILS;"
+    db.execute(query)
+    while(kycno in db.fetchall()):
         kycno = random.randint(10000000000000, 99999999999999)
-        query = "SELECT KYCNO FROM IDENTITY_DETAILS;"
-        db.execute(query)
-        while(kycno in db.fetchall()):
-            kycno = random.randint(10000000000000, 99999999999999)
-        
-        query = f"SELECT DISTINCT PAN FROM IDENTITY_DETAILS WHERE PAN = {pan};"
-        db.execute(query)
-        for(PAN) in db:
-            if(pan in PAN):
-                return render_template('/home.html', error='Invalid Identity details filled', the_title='KYC Form Entry')
 
-        
+    query = f"SELECT DISTINCT PAN FROM IDENTITY_DETAILS WHERE PAN = {pan};"
+    db.execute(query)
+    for(PAN) in db:
+        if(pan in PAN):
+            return render_template('/home.html', error='Invalid Identity details filled', the_title='KYC Form Entry')
+    '''
+    
+    if(validation_identity()):
         query = f"INSERT INTO IDENTITY_DETAILS (KYCNO, CUSTOMER_NAME, FS_NAME, GENDER, MARITAL_STATUS, DOB, PAN, AADHAR) VALUES ('{kycno}', '{name}', '{father_spouse_name}', '{gender}', '{marital_status}', '{dob}', '{pan}', '{aadhar}');"
         try:
             db.execute(query)
         except:
             return render_template('/home.html', error='Invalid Identity details filled', the_title='KYC Form Entry')
+        if(validation_address()):
+            query = f"INSERT INTO ADDRESS_DETAILS (KYCNO, HOME_ADDRESS, CITY, STATE_NAME, POSTAL_CODE, EMAIL, TELEPHONE, MOBILE) VALUES ('{kycno}', '{address}', '{city}', '{state}', '{pincode}', '{email}', '{telephone}', '{mobile}');"
+            try:
+                db.execute(query)
+            except:
+                return render_template('/home.html', error='Invalid Address details filled', the_title='KYC Form Entry')
+            if(validation_others()):
+                query = f"INSERT INTO OTHER_DETAILS (KYCNO, INCOME, OCCUPATION) VALUES ('{kycno}', '{income}', '{occupation}');"
+                try:
+                    db.execute(query)
+                except:
+                    return render_template('/home.html', error='Invalid Other details filled', the_title='KYC Form Entry')
         
-        query = f"INSERT INTO ADDRESS_DETAILS (KYCNO, HOME_ADDRESS, CITY, STATE_NAME, POSTAL_CODE, EMAIL, TELEPHONE, MOBILE) VALUES ('{kycno}', '{address}', '{city}', '{state}', '{pincode}', '{email}', '{telephone}', '{mobile}');"
-        try:
-            db.execute(query)
-        except:
-            return render_template('/home.html', error='Invalid Address details filled', the_title='KYC Form Entry')
-        
-        query = f"INSERT INTO OTHER_DETAILS (KYCNO, INCOME, OCCUPATION) VALUES ('{kycno}', '{income}', '{occupation}');"
-        try:
-            db.execute(query)
-        except:
-            return render_template('/home.html', error='Invalid Other details filled', the_title='KYC Form Entry')
-        
-        conn.commit()
-        return render_template('result.html',
+            conn.commit()
+            return render_template('result.html',
                                 s_kyc = kycno,
                                 s_name = name,
                                 s_fsname = father_spouse_name, 
@@ -116,7 +135,7 @@ def data():
                                 the_title = title, 
         )
     else:
-        return render_template('/home.html', error='Invalid information filled', the_title='KYC Form entry')
+        return render_template('/home.html', error='Invalid Identity information filled', the_title='KYC Form entry')
 
 
 @app.route('/view')
