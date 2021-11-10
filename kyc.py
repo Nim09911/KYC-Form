@@ -15,15 +15,15 @@ logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 
 #* MySQL conection and configuration
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Ashumysql@10'
-app.config['MYSQL_DATABASE_DB'] = 'kyc'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-
 # app.config['MYSQL_DATABASE_USER'] = 'root'
-# app.config['MYSQL_DATABASE_PASSWORD'] = ''
+# app.config['MYSQL_DATABASE_PASSWORD'] = 'Ashumysql@10'
 # app.config['MYSQL_DATABASE_DB'] = 'kyc'
 # app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_DB'] = 'kyc'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
 mysql = MySQL(app)
 
@@ -234,7 +234,7 @@ def updateform():
             db.execute(query)
         except:
             return render_template('/updateform.html', error='Invalid information in telephone details')
-    if(phone_validation(telephone)):
+    if(phone_validation(mobile)):
         query= f"UPDATE ADDRESS_DETAILS SET MOBILE = '{mobile}' WHERE KYCNO = '{kycno}';"
         try:
             db.execute(query)
