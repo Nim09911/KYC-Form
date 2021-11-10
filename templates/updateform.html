@@ -2,601 +2,488 @@
 
 <!-- Body template design  -->
 
-{% block body %}
-
-{% if error %}
+{% block body %} {% if error %}
 <div class="error-msg" , style="color: red">{{ error }}</div>
 {% endif %}
 
 <form method="POST" action="/updateresult">
-
   <h1 class="display-6 ms-3">Use this form to UPDATE KYC details:</h1>
 
-    <!-- <form> -->
-        <div class="container">
-            <h4 class="display-6 mb-4">A. Identity</h4>
-            <div class="row ms-3">
-                <div class="col-2 pe-0 py-1">
-                    <label for="kyc" class="form-label">KYC No* :-</label>
-                </div>
-                <div class="col-8 ps-0 mb-3">
-                    <input type="text" name="kycno" maxLength="14" minlength="14" class="form-control" id="kycno" required>
-                </div>
-                <div class="col-2 pe-0 py-1 mb-3">
-                    <label for="martialStatus" class="form-label">Martial Status* :-</label>
-                </div>
-                <div class="col-3">
-                    <input class="form-check-input" type="radio" name="maritalstatus" value="Married" id="Married" required>
-                    <label class="form-check-label" for="Married">
-                        Married
-                    </label>
-                </div>
-                <div class="col-3">
-                    <input class="form-check-input" type="radio" name="maritalstatus" value="Single" id="Single">
-                    <label class="form-check-label" for="Single">
-                        Single
-                    </label>
-                </div>
-                <div class="col-4"></div>
-            </div>
-
-            <!-- B. Address Details -->
-            <h4 class="display-6 my-4">B. Address Details</h4>
-            <div class="row ms-3">
-                <div class="col-1 pe-0 py-1">
-                    <label for="Address" class="form-label">Address* :-</label>
-                </div>
-                <div class="col-9 ps-0 mb-3">
-                    <input type="text" name="address" maxLength="102" class="form-control" id="Address">
-                </div>
-                <div class="col-2">
-                    <div id="nameHelp" class="form-text"> (Max 48 chracters )</div>
-                </div>
-
-                <div class="col-1 pe-0 py-1">
-                    <label for="City" class="form-label">City* :-</label>
-                </div>
-                <div class="col-2 ps-0 mb-3">
-                    <input type="text" name="city" maxlength="48" class="form-control" id="City">
-                </div>
-
-                <div class="col-1 pe-0 py-1">
-                    <label for="State" class="form-label">State* :-</label>
-                </div>
-                <div class="col-2 ps-0 mb-3">
-                    <input type="text" name="state" maxlength="48" class="form-control" id="State">
-                </div>
-
-                <div class="col-1 pe-0 py-1">
-                    <label for="PIN"  class="form-label">Pin Code* :-</label>
-                </div>
-                <div class="col-2 ps-0 mb-3">
-                    <input type="text" name="pincode" maxlength="6" class="form-control" id="PIN">
-                </div>
-                <div class="col-3"></div>
-                
-                <div class="col-12 pe-0 pt-1">
-                    <label for="ProofAddress" class="form-label">Proof of Adress (Select any 1)*</label>
-                </div>
-
-                <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="poa" value="Passport" id="Passport" required>
-                    <label class="form-check-label" for="Passport">
-                        Passport
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" value="Ration Card" id="Ration Card">
-                    <label class="form-check-label" for="Ration Card">
-                        Ration Card
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" value="Registered Lease" id="Registered Lease">
-                    <label class="form-check-label" for="Registered Lease">
-                        Registered Lease
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" value="Driving License" id="Driving License">
-                    <label class="form-check-label" for="Driving License">
-                        Driving License
-                    </label>
-                </div>
-                <div class="col-3 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" value="Residence Sale Agreement"id="Residence Sale Agreement">
-                    <label class="form-check-label" for="Residence Sale Agreement">
-                        Residence Sale Agreement
-                    </label>
-                </div>
-
-                <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="poa" value="Voter ID" id="Voter ID">
-                    <label class="form-check-label" for="Voter ID">
-                        Voter ID
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" value="Latest Telephone Bil" id="Latest Telephone Bill">
-                    <label class="form-check-label" for="Latest Telephone Bill">
-                        Latest Telephone Bill
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" value="Latest Electricity Bil" id="Latest Electricity Bill">
-                    <label class="form-check-label" for="Latest Electricity Bill">
-                        Latest Electricity Bill
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" value="Latest Gas Bill" id="Latest Gas Bill">
-                    <label class="form-check-label" for="Latest Gas Bill">
-                        Latest Gas Bill
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" value="Latest Bank Statement" id="Latest Bank Statement">
-                    <label class="form-check-label" for="Latest Bank Statement">
-                        Latest Bank Statement
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="poa" value="" id="No Change" required>
-                    <label class="form-check-label" for="No Change">
-                        No Change
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1"></div>
-
-                <div class="col-12 pe-0 pt-1">
-                    <!-- <label for="Contact" class="form-label">Contact Details </label> -->
-                </div>
-                <div class="col-2 py-1">
-                    <label class="form-check-label" for="Telephone Number">
-                        Telephone Number :-
-                    </label>
-                </div>
-                <div class="col-3 py-1">
-                    <input type="text" name="tel1" maxlength="11" class="form-control" id="Telephone Number">
-                </div>
-                <div class="col-2 py-1">
-                    <label class="form-check-label" for="Mobile Number">
-                        Mobile Number :-
-                    </label>
-                </div>
-                <div class="col-3 py-1">
-                    <input type="text" name="mobile1" maxlength="10" class="form-control" id="Mobile Number">
-                </div>
-                <div class="col-2 py-1"></div>
-                <div class="col-2 py-1">
-                    <label class="form-check-label" for="Email Id">
-                        Email Id :-
-                    </label>
-                </div>
-                <div class="col-3 py-1">
-                    <input name="mail" type="email" class="form-control" id="Email Id" required>
-                </div>
-            </div>
-            
-            <!-- C. Other Details -->
-            <h4 class="display-6 my-4">C. Other Details</h4>
-            <div class="row ms-3">
-                <div class="col-12 pe-0 pt-1">
-                    <label for="income" class="form-label">Gross Annual Income Details*</label>
-                </div>
-
-                <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="income" value="&lt; 1 lac" id="L1" required>
-                    <label class="form-check-label" for="L1">
-                        Less than 1 Lakh
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="income" value="1-5 lac" id="1T5">
-                    <label class="form-check-label" for="1T5">
-                        1 to 5 Lakhs
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="income" value="5-10 lac" id="5T10">
-                    <label class="form-check-label" for="5T10">
-                        5 to 10 Lakhs
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="income" value="10-25 lac" id="10T25">
-                    <label class="form-check-label" for="10T25">
-                        10 to 25 Lakhs
-                    </label>
-                </div>
-                <div class="col-3 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="income" value="&gt; 25 lac" id="M25">
-                    <label class="form-check-label" for="M25">
-                        More than 25 lakhs
-                    </label>
-                </div>
-
-                <div class="col-12 pe-0 pt-1 mt-3">
-                    <label for="ProofAddress" class="form-label">Occupation*</label>
-                </div>
-
-                <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="occupation" value="Private Sector" id="Private Sector" required>
-                    <label class="form-check-label" for="Private Sector">
-                        Private Sector
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" value="Public Sector" id="Public Sector">
-                    <label class="form-check-label" for="Public Sector">
-                        Public Sector
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" value="Government Sector" value="Government Sector">
-                    <label class="form-check-label" for="Government Sector">
-                        Government Sector
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" value="Business" id="Business">
-                    <label class="form-check-label" for="Business">
-                        Business
-                    </label>
-                </div>
-                <div class="col-3 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" value="Professional" id="Professional">
-                    <label class="form-check-label" for="Professional">
-                        Professional
-                    </label>
-                </div>
-
-                <div class="col-2 pe-0 pb-1 ms-5">
-                    <input class="form-check-input" type="radio" name="occupation" value="Agriculturist" id="Agriculturist">
-                    <label class="form-check-label" for="Agriculturist">
-                        Agriculturist
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" value="Retired" id="Retired">
-                    <label class="form-check-label" for="Retired">
-                        Retired
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" value="Housewife" id="Housewife">
-                    <label class="form-check-label" for="Housewife">
-                        Housewife
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" value="Student" id="Student">
-                    <label class="form-check-label" for="Student">
-                        Student
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1">
-                    <input class="form-check-input" type="radio" name="occupation" value="Others" id="Others">
-                    <label class="form-check-label" for="Others">
-                        Others
-                    </label>
-                </div>
-                <div class="col-2 pe-0 pb-1"></div>
-
-            </div>
-            <div class="col-12 mt-5">
-                <p class="fs-4" >When you are ready please click this button and ensure all data is correctly filled!</p>
-            </div>
-            <div class="d-grid gap-2 mt-2 mb-5">
-                <button class="btn btn-success" type="submit">Submit</button>
-            </div>
-        </div>
-    <!-- </form> -->
-
-  <!-- <table>
-    <p>A. Identity</p>
-    <tr>
-      <td>Name of Applicant*:</td>
-      <td>
+  <!-- <form> -->
+  <div class="container">
+    <h4 class="display-6 mb-4">A. Identity</h4>
+    <div class="row ms-3">
+      <div class="col-2 pe-0 py-1">
+        <label for="kyc" class="form-label">KYC No* :-</label>
+      </div>
+      <div class="col-8 ps-0 mb-3">
         <input
-          name="name"
           type="text"
-          width="120"
-          placeholder="max char 48"
-          maxlength="48"
+          name="kycno"
+          maxlength="14"
+          minlength="14"
+          class="form-control"
+          id="kycno"
           required
         />
-      </td>
-    </tr>
-    <tr>
-      <td>Fathers/Spouse Name*:</td>
-      <td>
+      </div>
+      <div class="col-2 pe-0 py-1 mb-3"></div>
+      <div class="col-2 pe-0 py-1 mb-3">
+        <label for="martialStatus" class="form-label">Martial Status* :-</label>
+      </div>
+      <div class="col-3">
         <input
-          name="fsname"
-          type="text"
-          width="120"
-          placeholder="max char 48"
-          maxlength="48"
+          class="form-check-input"
+          type="radio"
+          name="maritalstatus"
+          value="Married"
+          id="Married"
           required
         />
-      </td>
-    </tr>
-    <tr>
-      <td>Marital Status*:</td>
-      <td>
-        <input name="maritalstatus" type="radio" value="Married" required />
-        <label>Married</label>
-      </td>
-      <td>
-        <input name="maritalstatus" type="radio" value="Single" />
-        <label>Single</label>
-      </td>
-    </tr>
-    <tr>
-      <td>Gender*:</td>
-      <td>
-        <input name="gender" type="radio" value="Male" required />
-        <label>Male</label>
-      </td>
-      <td>
-        <input name="gender" type="radio" value="Female" />
-        <label>Female</label>
-      </td>
-    </tr>
-    <tr>
-      <td>Date of Birth:</td>
-      <td>
-        <input name="dob" type="date" />
-      </td>
-    </tr>
-    <tr>
-      <td>PAN*:</td>
-      <td>
+        <label class="form-check-label" for="Married"> Married </label>
+      </div>
+      <div class="col-3">
         <input
-          name="pan"
-          maxlength="10"
-          minlength="10"
-          type="text"
-          width="120"
-          required
+          class="form-check-input"
+          type="radio"
+          name="maritalstatus"
+          value="Single"
+          id="Single"
         />
-      </td>
-    </tr>
-    <tr>
-      <td>Aadhar*:</td>
-      <td>
-        <input
-          name="aadhar"
-          maxlength="12"
-          minlength="12"
-          type="text"
-          width="120"
-          required
-        />
-      </td>
-    </tr>
-  </table>
+        <label class="form-check-label" for="Single"> Single </label>
+      </div>
+      <div class="col-4"></div>
+    </div>
 
-  <p>B Address Details</p>
-
-  <table>
-    <tr>
-      <td>Address*:</td>
-      <td>
+    <!-- B. Address Details -->
+    <h4 class="display-6 my-4">B. Address Details</h4>
+    <div class="row ms-3">
+      <div class="col-1 pe-0 py-1">
+        <label for="Address" class="form-label">Address* :-</label>
+      </div>
+      <div class="col-9 ps-0 mb-3">
         <input
+          type="text"
           name="address"
-          type="text"
-          width="120"
-          placeholder="max char 102"
           maxlength="102"
-          required
+          class="form-control"
+          id="Address"
         />
-      </td>
-    </tr>
-    <tr>
-      <td>City/Town/Village*:</td>
-      <td>
+      </div>
+      <div class="col-2">
+        <div id="nameHelp" class="form-text">(Max 48 chracters )</div>
+      </div>
+
+      <div class="col-1 pe-0 py-1">
+        <label for="City" class="form-label">City* :-</label>
+      </div>
+      <div class="col-2 ps-0 mb-3">
         <input
+          type="text"
           name="city"
-          type="text"
-          width="120"
-          placeholder="max char 48"
           maxlength="48"
-          required
+          class="form-control"
+          id="City"
         />
-      </td>
-    </tr>
-    <tr>
-      <td>State:</td>
-      <td>
+      </div>
+
+      <div class="col-1 pe-0 py-1">
+        <label for="State" class="form-label">State* :-</label>
+      </div>
+      <div class="col-2 ps-0 mb-3">
         <input
+          type="text"
           name="state"
-          type="text"
-          width="120"
-          placeholder="max char 48"
           maxlength="48"
+          class="form-control"
+          id="State"
         />
-      </td>
-    </tr>
-    <tr>
-      <td>Postal Code*:</td>
-      <td>
+      </div>
+
+      <div class="col-1 pe-0 py-1">
+        <label for="PIN" class="form-label">Pin Code* :-</label>
+      </div>
+      <div class="col-2 ps-0 mb-3">
         <input
-          name="pincode"
           type="text"
-          width="120"
-          placeholder="6 digit"
+          name="pincode"
           maxlength="6"
-          minlength="6"
-          required
+          class="form-control"
+          id="PIN"
         />
-      </td>
-    </tr>
-  </table>
+      </div>
+      <div class="col-3"></div>
 
-  <p>Proof of Address: Please Select one</p>
-  <table>
-    <tr>
-      <td>
-        <input name="poa" type="radio" value="Passport" required />
-        <label>Passport</label>
-      </td>
-      <td>
-        <input name="poa" type="radio" value="Ration Card" required />
-        <label>Ration Card</label>
-      </td>
-      <td>
-        <input name="poa" type="radio" value="Registered Lease" required />
-        <label>Registered Lease</label>
-      </td>
-      <td>
+      <div class="col-12 pe-0 pt-1">
+        <label for="ProofAddress" class="form-label"
+          >Proof of Adress (Select any 1)*</label
+        >
+      </div>
+
+      <div class="col-2 pe-0 pb-1 ms-5">
         <input
+          class="form-check-input"
+          type="radio"
           name="poa"
-          type="radio"
-          value="Residence Sale Agreement"
+          value="Passport"
+          id="Passport"
           required
         />
-        <label>Residence Sale Agreement</label>
-      </td>
-      <td>
-        <input name="poa" type="radio" value="Driving License" required />
-        <label>Driving License</label>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input name="poa" type="radio" value="Voter ID" required />
-        <label>Voter ID</label>
-      </td>
-      <td>
-        <input name="poa" type="radio" value="Latest Bank Statement" required />
-        <label>Latest Bank Statement</label>
-      </td>
-      <td>
-        <input name="poa" type="radio" value="Latest Tel.Ph. Bill" required />
-        <label>Latest Tel.Ph. Bill</label>
-      </td>
-      <td>
-        <input name="poa" type="radio" value="Latest Elec. Bill" required />
-        <label>Latest Elec. Bill</label>
-      </td>
-      <td>
-        <input name="poa" type="radio" value="Latest Gas Bill" required />
-        <label>Latest Gas Bill</label>
-      </td>
-    </tr>
-  </table>
-
-  <p>Contact Details</p>
-  <table>
-    <tr>
-      <td>Telephone:</td>
-      <td>
-        <input name="tel1" type="number" placeholder="ISD" />
-        <input name="tel2" type="number" placeholder="STD" />
-        <input name="tel3" type="number" placeholder="Telephone" />
-      </td>
-    </tr>
-    <tr>
-      <td>Mobile:</td>
-      <td>
-        <input name="mobile1" type="number" placeholder="ISD" />
-        <input name="mobile2" type="number" placeholder="mobile" />
-      </td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td>
-        <input name="mail" type="email" placeholder="yourmail@hostname.com" />
-      </td>
-    </tr>
-  </table>
-
-  <p>C. Other Details</p>
-  <table>
-    <tr>
-      <td>Gross Annual Income Details</td>
-      <td>
-        <input name="income" type="radio" value=" &lt; 1lac" required />
-        <label> &lt; 1lac </label>
-      </td>
-      <td>
-        <input name="income" type="radio" value="1 to 5lac" />
-        <label> &lt; 1 - 5 lac </label>
-      </td>
-      <td>
-        <input name="income" type="radio" value="5 to 10lac" />
-        <label> &lt; 5 - 10 lac </label>
-      </td>
-      <td>
-        <input name="income" type="radio" value="10 to 25lac" />
-        <label> 10 - 25 lac </label>
-      </td>
-      <td>
-        <input name="income" type="radio" value="&gt; 25lac" />
-        <label> &gt; 25 lac </label>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Occupation Details</td>
-      <td>
+        <label class="form-check-label" for="Passport"> Passport </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
         <input
-          name="occupation"
+          class="form-check-input"
           type="radio"
-          value="Private Sector Service"
+          name="poa"
+          value="Ration Card"
+          id="Ration Card"
+        />
+        <label class="form-check-label" for="Ration Card"> Ration Card </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="poa"
+          value="Registered Lease"
+          id="Registered Lease"
+        />
+        <label class="form-check-label" for="Registered Lease">
+          Registered Lease
+        </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="poa"
+          value="Driving License"
+          id="Driving License"
+        />
+        <label class="form-check-label" for="Driving License">
+          Driving License
+        </label>
+      </div>
+      <div class="col-3 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="poa"
+          value="Residence Sale Agreement"
+          id="Residence Sale Agreement"
+        />
+        <label class="form-check-label" for="Residence Sale Agreement">
+          Residence Sale Agreement
+        </label>
+      </div>
+
+      <div class="col-2 pe-0 pb-1 ms-5">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="poa"
+          value="Voter ID"
+          id="Voter ID"
+        />
+        <label class="form-check-label" for="Voter ID"> Voter ID </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="poa"
+          value="Latest Telephone Bil"
+          id="Latest Telephone Bill"
+        />
+        <label class="form-check-label" for="Latest Telephone Bill">
+          Latest Telephone Bill
+        </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="poa"
+          value="Latest Electricity Bil"
+          id="Latest Electricity Bill"
+        />
+        <label class="form-check-label" for="Latest Electricity Bill">
+          Latest Electricity Bill
+        </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="poa"
+          value="Latest Gas Bill"
+          id="Latest Gas Bill"
+        />
+        <label class="form-check-label" for="Latest Gas Bill">
+          Latest Gas Bill
+        </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="poa"
+          value="Latest Bank Statement"
+          id="Latest Bank Statement"
+        />
+        <label class="form-check-label" for="Latest Bank Statement">
+          Latest Bank Statement
+        </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="poa"
+          value=""
+          id="No Change"
           required
         />
-        <label> Private Sector Service </label>
-      </td>
-      <td>
-        <input name="occupation" type="radio" value="Public Sector" />
-        <label> Public Sector </label>
-      </td>
-      <td>
-        <input name="occupation" type="radio" value="Government" />
-        <label> Government Sector </label>
-      </td>
-      <td>
-        <input name="occupation" type="radio" value="Business" />
-        <label> Business </label>
-      </td>
-      <td>
-        <input name="occupation" type="radio" value="Professional" />
-        <label> Professional </label>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <input name="occupation" type="radio" value="Agriculturist" />
-        <label> Agriculturist </label>
-      </td>
-      <td>
-        <input name="occupation" type="radio" value="Retired" />
-        <label> Retired </label>
-      </td>
-      <td>
-        <input name="occupation" type="radio" value="Housewife" />
-        <label> Housewife </label>
-      </td>
-      <td>
-        <input name="occupation" type="radio" value="Student" />
-        <label> Student </label>
-      </td>
-      <td>
-        <input name="occupation" type="radio" value="Others" />
-        <label> Others </label>
-      </td>
-    </tr>
-  </table>
+        <label class="form-check-label" for="No Change"> No Change </label>
+      </div>
+      <div class="col-2 pe-0 pb-1"></div>
 
-  <p>
-    When you are ready please click this button and ensure all data is correctly
-    filled!
-  </p>
-  <p><input value="Submit" type="submit" /></p> -->
+      <div class="col-12 pe-0 pt-1">
+        <!-- <label for="Contact" class="form-label">Contact Details </label> -->
+      </div>
+      <div class="col-2 py-1">
+        <label class="form-check-label" for="Telephone Number">
+          Telephone Number :-
+        </label>
+      </div>
+      <div class="col-3 py-1">
+        <input
+          type="text"
+          name="tel1"
+          maxlength="11"
+          class="form-control"
+          id="Telephone Number"
+        />
+      </div>
+      <div class="col-2 py-1">
+        <label class="form-check-label" for="Mobile Number">
+          Mobile Number :-
+        </label>
+      </div>
+      <div class="col-3 py-1">
+        <input
+          type="text"
+          name="mobile1"
+          maxlength="10"
+          class="form-control"
+          id="Mobile Number"
+        />
+      </div>
+      <div class="col-2 py-1"></div>
+      <div class="col-2 py-1">
+        <label class="form-check-label" for="Email Id"> Email Id :- </label>
+      </div>
+      <div class="col-3 py-1">
+        <input
+          name="mail"
+          type="email"
+          class="form-control"
+          id="Email Id"
+          required
+        />
+      </div>
+    </div>
 
+    <!-- C. Other Details -->
+    <h4 class="display-6 my-4">C. Other Details</h4>
+    <div class="row ms-3">
+      <div class="col-12 pe-0 pt-1">
+        <label for="income" class="form-label"
+          >Gross Annual Income Details*</label
+        >
+      </div>
+
+      <div class="col-2 pe-0 pb-1 ms-5">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="income"
+          value="&lt; 1 lac"
+          id="L1"
+          required
+        />
+        <label class="form-check-label" for="L1"> Less than 1 Lakh </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="income"
+          value="1-5 lac"
+          id="1T5"
+        />
+        <label class="form-check-label" for="1T5"> 1 to 5 Lakhs </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="income"
+          value="5-10 lac"
+          id="5T10"
+        />
+        <label class="form-check-label" for="5T10"> 5 to 10 Lakhs </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="income"
+          value="10-25 lac"
+          id="10T25"
+        />
+        <label class="form-check-label" for="10T25"> 10 to 25 Lakhs </label>
+      </div>
+      <div class="col-3 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="income"
+          value="&gt; 25 lac"
+          id="M25"
+        />
+        <label class="form-check-label" for="M25"> More than 25 lakhs </label>
+      </div>
+
+      <div class="col-12 pe-0 pt-1 mt-3">
+        <label for="ProofAddress" class="form-label">Occupation*</label>
+      </div>
+
+      <div class="col-2 pe-0 pb-1 ms-5">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Private Sector"
+          id="Private Sector"
+          required
+        />
+        <label class="form-check-label" for="Private Sector">
+          Private Sector
+        </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Public Sector"
+          id="Public Sector"
+        />
+        <label class="form-check-label" for="Public Sector">
+          Public Sector
+        </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Government Sector"
+          value="Government Sector"
+        />
+        <label class="form-check-label" for="Government Sector">
+          Government Sector
+        </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Business"
+          id="Business"
+        />
+        <label class="form-check-label" for="Business"> Business </label>
+      </div>
+      <div class="col-3 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Professional"
+          id="Professional"
+        />
+        <label class="form-check-label" for="Professional">
+          Professional
+        </label>
+      </div>
+
+      <div class="col-2 pe-0 pb-1 ms-5">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Agriculturist"
+          id="Agriculturist"
+        />
+        <label class="form-check-label" for="Agriculturist">
+          Agriculturist
+        </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Retired"
+          id="Retired"
+        />
+        <label class="form-check-label" for="Retired"> Retired </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Housewife"
+          id="Housewife"
+        />
+        <label class="form-check-label" for="Housewife"> Housewife </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Student"
+          id="Student"
+        />
+        <label class="form-check-label" for="Student"> Student </label>
+      </div>
+      <div class="col-2 pe-0 pb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="occupation"
+          value="Others"
+          id="Others"
+        />
+        <label class="form-check-label" for="Others"> Others </label>
+      </div>
+      <div class="col-2 pe-0 pb-1"></div>
+    </div>
+    <div class="col-12 mt-5">
+      <p class="fs-4">
+        When you are ready please click this button and ensure all data is
+        correctly filled!
+      </p>
+    </div>
+    <div class="d-grid gap-2 mt-2 mb-5">
+      <button class="btn btn-primary" type="submit">Update</button>
+    </div>
+  </div>
 </form>
 
 {% endblock %}
