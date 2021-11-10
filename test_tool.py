@@ -40,6 +40,17 @@ phone_test = {
     "12345678915" : False,
     "12345/6789" : False
 }
+
+telephone_test = {
+    "9874563215" : True,
+    "" : True,
+    "15698" : False,
+    "09876789876" : True,
+    "acddb12345" : False,
+    "abcde" : False,
+    "12345678915" : False,
+    "12345/6789" : False
+}
     
 dob_test = {
     "2001-05-26" :True,  
@@ -98,6 +109,15 @@ def test_phone(phno,status):
         return True
     except:
         print(f'Test case:  \"{phno}\" : FAILED.\nExpected : {status}\tAsserted : {phone_validation(phno)}\n')
+        return False
+
+def test_telephone(phno,status):
+    try :
+        assert telephone_validation(phno) == status
+        print(f'Test case:  \"{phno}\" : PASSED.\nExpected : {status}\tAsserted : {telephone_validation(phno)}\n')
+        return True
+    except:
+        print(f'Test case:  \"{phno}\" : FAILED.\nExpected : {status}\tAsserted : {telephone_validation(phno)}\n')
         return False
  
 def test_dob(dob,status):
@@ -163,11 +183,24 @@ def main():
 
     max_count = len(phone_test)
     count, countpass, countfail = 0, 0, 0  
-    print("\nTESTING PHONE NUMBER\n")
+    print("\nTESTING MOBILE NUMBER\n")
     for pno in phone_test:
         count += 1
         print(f"Case{count}/{max_count}:", end=" ")
         val = test_phone(pno,phone_test[pno])
+        if(val):
+            countpass += 1
+        else:
+            countfail +=1
+    print(f"\nPassed:{countpass}/{max_count}, Failed:{countfail}/{max_count}\n")
+
+    max_count = len(telephone_test)
+    count, countpass, countfail = 0, 0, 0  
+    print("\nTESTING TELEPHONE NUMBER\n")
+    for pno in telephone_test:
+        count += 1
+        print(f"Case{count}/{max_count}:", end=" ")
+        val = test_telephone(pno,telephone_test[pno])
         if(val):
             countpass += 1
         else:
